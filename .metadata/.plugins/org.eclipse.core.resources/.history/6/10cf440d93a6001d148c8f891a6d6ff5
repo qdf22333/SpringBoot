@@ -1,0 +1,20 @@
+package com.mysite.sbb;
+
+import java.time.LocalDateTime;		//자신의 시스템의 로케일의 시간설정
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Enti		//자바 클래스를 DataBase의 테이블과 매핑된 클래스 : 테이블명 : question
+
+public class Question {
+
+	private Integer id;	//Primary Key, 시퀀스 (1, 1)
+	
+	private String subject;
+	
+	private LocalDateTime createDate;
+	
+}

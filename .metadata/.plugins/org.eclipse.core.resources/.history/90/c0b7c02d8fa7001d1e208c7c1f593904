@@ -1,0 +1,11 @@
+package com.mysite.sbb2;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mysite.sbb.Answer;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+	
+	
+
+}

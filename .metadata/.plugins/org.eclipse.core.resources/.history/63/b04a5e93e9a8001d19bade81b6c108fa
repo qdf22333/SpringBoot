@@ -1,0 +1,13 @@
+package com.mysite.sbb.question;
+
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class QuestionService {
+	//JPA 메소드를 사용하기 위해	(생성자를 통한 객체 자동주입) 
+	private final QuestionRepository questionRepository;
+	
+	
+
+}

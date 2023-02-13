@@ -1,0 +1,24 @@
+package com.mysite.sbb2.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+public class UsersController {
+	@GetMapping("/")	//http://localhost:9292
+	public String users_list() {
+		
+		return "users_list";
+	}
+
+
+}
+
+
+
+	
+
+

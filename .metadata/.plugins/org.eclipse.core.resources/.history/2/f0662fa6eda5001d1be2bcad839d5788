@@ -1,0 +1,13 @@
+package com.mysite.sbb;
+
+public class HelloLombok2 {
+	
+	
+	
+
+	public static void main(String[] args) {
+		//객체 생성 후 테스트
+
+	}
+
+}

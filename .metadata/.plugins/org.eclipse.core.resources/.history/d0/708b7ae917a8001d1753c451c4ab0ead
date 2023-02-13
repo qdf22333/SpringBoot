@@ -1,0 +1,63 @@
+package com.mysite.sbb2;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
+import org.junit.jupiter.api.Test;
+import org.mockito.stubbing.Answer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+
+@SpringBootTest
+class Sbb2ApplicationTests {
+
+	@Autowired    //객체 자동 주입 , JPA의 CRUD할수 있는 메소드가 적용되어 있음. 
+	private UsersRepository usersRepository;
+
+
+	
+	/* Insert JUnit Test  , JPA 인터페이스에 정의 된 save() */
+	@Test
+	void contextLoads() {
+		Users u1 = new Users(); 
+		u1.setName("예림");
+		u1.setPass("1234");
+		u1.setEmail("aaa@hanmail.net");
+		u1.setCreateDate(LocalDateTime.now());   // 현재 시간을 setter에 저장 
+		this.usersRepository.save(u1);  	//첫번째 질문 저장 
+		
+		Users u2 = new Users(); 
+		u2.setName("예림2");
+		u2.setPass("12345");
+		u2.setEmail("bbb@hanmail.net");
+		u2.setCreateDate(LocalDateTime.now());   // 현재 시간을 setter에 저장 
+		this.usersRepository.save(u2);  	//첫번째 질문 저장 
+		
+		Users u3 = new Users(); 
+		u2.setName("예림3");
+		u2.setPass("123456");
+		u2.setEmail("ccc@hanmail.net");
+		u2.setCreateDate(LocalDateTime.now());   // 현재 시간을 setter에 저장 
+		this.usersRepository.save(u3);  	//첫번째 질문 저장
+		
+		Users u4 = new Users(); 
+		u4.setName("예림4");
+		u4.setPass("1234567");
+		u4.setEmail("ddd@hanmail.net");
+		u4.setCreateDate(LocalDateTime.now());   // 현재 시간을 setter에 저장 
+		this.usersRepository.save(u4);  	//첫번째 질문 저장 
+		
+		Users u5 = new Users(); 
+		u5.setName("예림5");
+		u5.setPass("12345678");
+		u5.setEmail("eee@hanmail.net");
+		u5.setCreateDate(LocalDateTime.now());   // 현재 시간을 setter에 저장 
+		this.usersRepository.save(u5);  	//첫번째 질문 저장 
+				
+	}
+	
+	
+	
+}

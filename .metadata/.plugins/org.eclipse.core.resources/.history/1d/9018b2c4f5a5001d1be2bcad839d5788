@@ -1,0 +1,23 @@
+package com.mysite.sbb;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@req
+public class HelloLombok4 {
+	
+	private String hello;		// 필드 : private
+	private int lombok;			// 필드 :	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
