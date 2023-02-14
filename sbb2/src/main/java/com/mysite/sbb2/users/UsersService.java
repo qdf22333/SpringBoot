@@ -3,6 +3,9 @@ package com.mysite.sbb2.users;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mysite.sbb2.DataNotFoundException;
@@ -19,6 +22,13 @@ public class UsersService {
 		return this.usersRepository.findAll();
 	}
 	
+	public Page<Users> getList(int page){
+		
+		Pageable pageable = PageRequest.of(page, 10); 
+		
+		return this.usersRepository.findAll(pageable);
+	}
+	
 	public Users getUsers(Integer idx) {
 		
 		Optional<Users> op = this.usersRepository.findById(idx);
@@ -30,6 +40,16 @@ public class UsersService {
 		}
 		
 		
+	}
+	
+	public void create(String name, String pass, String email) {
+		Users u = new Users();
+		u.setName(name);
+		u.setPass(pass);
+		u.setEmail(email);
+		
+		this.usersRepository.save(u);
+	
 	}
 	
 	

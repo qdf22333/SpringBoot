@@ -1,15 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>�� ������</title>
-</head>
-<body>
-
-<h1 th:text = "${users.name}">�̸�</h1>
-<div th:text = "${users.email}">����</div>
+<html layout:decorate="~{layout}">
 
 
+<div layout:fragment="content" class="container my-3">
+   <table class="table">
+      <thead class="table-dark">
+         <!-- 제목을 처리 -->
+         <tr>
+            <th>이름</th>
+            <th>비밀번호</th>
+            <th>이메일</th>
 
-</body>
+         </tr>
+      </thead>
+      
+      <tr>
+         <td th:text="${users.name}">이름</td>
+         <td th:text="${users.pass}">비밀번호</td>
+         <td th:text="${users.email}">이메일</td>
+
+         </tr>
+         
+   </table>
+      </div>
 </html>

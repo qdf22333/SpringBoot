@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class IndexController {
-	
-	@GetMapping("/")	//http://localhost:9292
-	public String index() {
-		
-		return "index";
-	}
+   
+   @GetMapping("/")      // http://localhost:9696
+   public String index() {
+      
+      return "redirect:/question/list";
+   }
 
 }

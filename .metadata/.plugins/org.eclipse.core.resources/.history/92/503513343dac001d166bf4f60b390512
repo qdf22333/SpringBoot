@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<center>
+	<h1>유저 디테일 출력</h1>
+	<hr>
+	<table>
+		<tr>
+			<th>이름</th>
+			<th>비밀번호</th>
+			<th>이메일</th>
+			<th>등록일</th>
+			<th>CNT</th>
+		</tr>
+		<tr>
+			<td th:text="${user_de.name}"></td>
+			<td th:text="${user_de.pass}"></td>
+			<td th:text="${user_de.email}"></td>
+			<td th:text="${user_de.regdate}"></td>
+			<td th:text="${user_de.cnt}"></td>
+		</tr>
+	
+	</table>
+
+</center>
+
+</body>
+</html>

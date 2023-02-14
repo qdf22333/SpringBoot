@@ -3,6 +3,7 @@ package com.mysite.sbb.question;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,26 +50,50 @@ public class QuestionController {
        
         */
    
-   @GetMapping("/question/list")   // http://localhost:9696/question/list
-   @PostMapping("/question/list")   // Form 태그의 method=post action ="/question/list"
+//   @GetMapping("/question/list")   // http://localhost:9696/question/list
+//   @PostMapping("/question/list")   // Form 태그의 method=post action ="/question/list"
    //@ResponseBody             // 요청을 브라우저에 출력
-   public String list(Model model) {
+//   public String list(Model model) {
       // 1. 클라이언트 요청 정보 :  http://localhost:9696/question/list
       
       // 2. 비즈니스 로직을 처리
-      List<Question> questionList =
+//      List<Question> questionList =
             //this.questionRepository.findAll();
-            this.questionService.getList();
+//            this.questionService.getList();
       
       // 3. 뷰(View) 페이지로 전송
          // Model : 뷰 페이지로 서버의 데이터를 담아서 전송 객체 (Session , Application)
-      model.addAttribute("questionList", questionList);
+//      model.addAttribute("questionList", questionList);
+      
+//      return "question_list";
+//   }
+   
+   // 2월 14일 페이징 처리를 위해 수정됨
+   // http://localhost:9696/question/list/?page=0
+   @GetMapping("/question/list")
+   public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+	   
+	   
+	   
+      
+      // 비즈니스 로직 처리 : 
+      Page<Question> paging =
+         this.questionService.getList(page);
+      
+      // model 객체에 결과로 받은 paging 객체를 client 로 전송
+      model.addAttribute("paging", paging);
       
       return "question_list";
    }
    
+   
+   
+   
+   
+   
+   
    // 상세 페이지를 처리하는 메소드 : /question/detail/1
-   @GetMapping(value = "/question/detail/{id}")
+   @GetMapping("/question/detail/{id}")
    public String detail (Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
       // 서비스 클래스의 메소드 호출 : 상세 페이지 보여 달라
       Question q =
@@ -79,23 +104,27 @@ public class QuestionController {
       return "question_detail";   // template : question_detail.html
    }
    
+   
+   
+   
    @GetMapping("/question/create")
    public String questionCreate(QuestionForm questionForm) {
       return "question_form";
    }
    @PostMapping("/question/create")
    public String questionCreate(
-        // @RequestParam String subject,@RequestParam String content
-		   @Valid QuestionForm questionForm, BindingResult bindingResult)
+         //@RequestParam String subject,@RequestParam String content
+         @Valid QuestionForm questionForm, BindingResult bingResult)
           {
-        	 if (bindingResult.hasErrors()) {	//subject, content 가 비어있을 때
-        		 return "question_form";
-        	 }
+            
+            if (bingResult.hasErrors()) {   // subject,content 가 비어있을 때
+               return "question_form";
+            }
       
       // 로직 작성 부분 (Service 에서 로직을 만들어서 작동)
-     // this.questionService.create(subject, content);
-        	 
-       	 this.questionService.create(questionForm.getSubject(), questionForm.getContent());
+      //this.questionService.create(subject, content);
+            
+            this.questionService.create(questionForm.getSubject(), questionForm.getContent());
       
       // 값을 DB에 저장 후 List페이지로 리다이렉트 (질문 목록으로 이동)
       return "redirect:/question/list";

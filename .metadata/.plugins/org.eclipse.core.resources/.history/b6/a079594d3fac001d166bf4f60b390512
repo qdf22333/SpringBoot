@@ -1,0 +1,10 @@
+<html layout:decorate="~{layout}">
+
+
+<h1 th:text = "${users.name}">이름</h1>
+<div th:text = "${users.email}">이메일</div>
+<div th:text = "${users.pass}">비밀번호</div>
+
+
+
+</html>
