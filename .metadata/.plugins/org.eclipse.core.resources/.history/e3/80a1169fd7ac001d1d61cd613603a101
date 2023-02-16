@@ -1,0 +1,21 @@
+package com.mysite.sbb.user;
+
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class UserService {
+	
+	private final UserRepository userRepository;
+	
+	
+	public StieUser create(String username, String email, String password) {
+		
+		StieUser user = new SiteUser();
+		user.setUsername(username)
+	}
+	
+
+}

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Sbb2ApplicationTests" project="sbb2" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.mysite.sbb2.Sbb2ApplicationTests" time="0.485" displayname="Sbb2ApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.mysite.sbb2.Sbb2ApplicationTests]">
-    <testcase name="insert1000" classname="com.mysite.sbb2.Sbb2ApplicationTests" time="0.485" displayname="insert1000()" uniqueid="[engine:junit-jupiter]/[class:com.mysite.sbb2.Sbb2ApplicationTests]/[method:insert1000()]"/>
-  </testsuite>
-</testrun>
