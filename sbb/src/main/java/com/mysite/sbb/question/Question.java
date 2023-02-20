@@ -2,6 +2,7 @@ package com.mysite.sbb.question;
 
 import java.time.LocalDateTime;   //자신의 시스템의 로케일의 시간설정 
 import java.util.List;
+import java.util.Set;
 
 import com.mysite.sbb.answer.Answer;
 import com.mysite.sbb.user.SiteUser;
@@ -14,6 +15,7 @@ import jakarta.persistence.Entity;   //JPA 에서 적용된 어노테이션
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -54,5 +56,15 @@ public class Question {
 	private SiteUser author;
 	
 	private LocalDateTime modifyDate;
+	
+	
+//	추천
+	@ManyToMany
+	Set<SiteUser> voter;	//한명의 사용자가 여러 질문에 투표할 수 있음.
+	
+	
+	
+	
+	
 		
 }

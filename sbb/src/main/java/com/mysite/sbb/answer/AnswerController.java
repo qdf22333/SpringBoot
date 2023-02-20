@@ -54,9 +54,10 @@ public class AnswerController {
 
 		// 답변 내용을 저장하는 메소드 호출 (Service 에서 호출)
 
-		this.answerService.create(question, answerForm.getContent(), siteUser);
-
-		return String.format("redirect:/question/detail/%s", id);
+		Answer answer = this.answerService.create(question, 
+                answerForm.getContent(), siteUser);
+        return String.format("redirect:/question/detail/%s#answer_%s", 
+                answer.getQuestion().getId(), answer.getId());
 	}
 
 	@PreAuthorize("isAuthenticated()")
@@ -83,7 +84,8 @@ public class AnswerController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
 		}
 		this.answerService.modify(answer, answerForm.getContent());
-		return String.format("redirect:/question/detail/%s", answer.getQuestion().getId());
+		 return String.format("redirect:/question/detail/%s#answer_%s", 
+	                answer.getQuestion().getId(), answer.getId());
 	}
 	
 	
@@ -98,5 +100,16 @@ public class AnswerController {
         this.answerService.delete(answer);
         return String.format("redirect:/question/detail/%s", answer.getQuestion().getId());
     }
+	
+	//답변 추천인 
+	 @PreAuthorize("isAuthenticated()")
+	    @GetMapping("/vote/{id}")
+	    public String answerVote(Principal principal, @PathVariable("id") Integer id) {
+	        Answer answer = this.answerService.getAnswer(id);
+	        SiteUser siteUser = this.userService.getUser(principal.getName());
+	        this.answerService.vote(answer, siteUser);
+	        return String.format("redirect:/question/detail/%s#answer_%s", 
+	                answer.getQuestion().getId(), answer.getId());
+	    }
 }
 

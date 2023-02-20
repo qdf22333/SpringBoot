@@ -73,13 +73,15 @@ public class QuestionController {
 	// 2월 14일 페이징 처리를 위해 수정됨
 	// http://localhost:9696/question/list/?page=0
 	@GetMapping("/question/list")
-	public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
+	public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
+			@RequestParam(value = "kw", defaultValue = "") String kw) {
 
 		// 비즈니스 로직 처리 :
-		Page<Question> paging = this.questionService.getList(page);
+		Page<Question> paging = this.questionService.getList(page, kw);
 
 		// model 객체에 결과로 받은 paging 객체를 client 로 전송
 		model.addAttribute("paging", paging);
+		model.addAttribute("kw", kw);
 
 		return "question_list";
 	}
@@ -164,5 +166,16 @@ public class QuestionController {
 	 return "redirect:/";
 	 }
 	
+	
+	//추천버튼 클릭시 호출. 
+	//로그인한 사람만 가능 -> @PreAuthorize("isAuthenticated()") 호출
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/question/vote/{id}")
+    public String questionVote(Principal principal, @PathVariable("id") Integer id) {
+        Question question = this.questionService.getQuestion(id);
+        SiteUser siteUser = this.userService.getUser(principal.getName());
+        this.questionService.vote(question, siteUser);
+        return String.format("redirect:/question/detail/%s", id);
+    }
 
 }
