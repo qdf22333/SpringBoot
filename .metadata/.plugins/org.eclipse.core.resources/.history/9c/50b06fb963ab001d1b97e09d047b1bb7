@@ -1,7 +1,0 @@
-<html layout:decorate="~{Layout}">
-<div layout:fragment="content" class="container">
-
-
-
-</div>
-</html>

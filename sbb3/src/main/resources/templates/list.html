@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 리스트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+            box-sizing: border-box;
+            font-family: 'NanumSquareNeo-Variable';
+
+        }
+        ul {
+            list-style: none;
+        }
+        #fix_logo{
+            position: fixed;
+            top: 580px;
+            right: 50px;
+        }
+        #wrap {
+            text-align: center;
+            margin: 0 auto;
+        }
+        header {
+            height: 130px;
+            /* border: 1px solid blue; */
+            /* background-color: rgb(245, 209, 209); */
+            position: relative;
+            border-bottom: 1px solid rgb(219, 218, 218);
+            margin-bottom: 30px;
+        }
+        #main {
+            overflow: hidden;
+            /* border: 1px solid green; */
+            /* background-color: rgb(243, 231, 233); */
+        }
+           
+        
+        #container {
+            width: 1200px;
+            height: inherit;
+            margin: 0 auto;
+            /* border: 1px solid blue; */
+            position: relative;
+
+        }
+
+
+    
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        #logo {
+            width: 60px;
+            position: absolute;
+            top: 10px;
+            left: 60px;
+            
+        }
+        #search {
+            position: absolute;
+            top: 30px;
+            right: 220px;
+        }
+        #search input{
+            border-radius: 30px;
+            width: 200px;
+            height: 30px;
+            background-color: rgb(236, 231, 231);
+            border: 1px solid white;
+            text-align: center;         
+                
+            
+        }
+    
+          
+        input:focus {outline: none;} /* outline 테두리 없애기 */
+
+       
+
+        #search img {
+            width: 20px;
+            background-color: rgba(255, 255, 255, 0);
+            position: absolute;
+            top: 5px;
+            right: 20px;
+        
+        }
+       
+        #top_menu { 
+            /* border: 1px solid red; */
+            position: absolute;
+            right: 50px;
+            top: 30px;
+        }
+      
+        #top_menu li {
+            display: inline;
+            padding: 8px;
+       }
+            
+        p {
+            font-size: 20px;
+
+        }
+
+        /* 헤더 메인메뉴  */
+
+        #main_menu{ 
+            float: left;
+            /* border: 1px solid red; */
+            position: absolute;
+            left: 200px;
+            top: 90px;        
+            
+                    
+            
+        }
+    
+        #main_menu li {
+            display: inline;
+            font-size: 18px;
+            margin: 30px;
+            font-weight: bold;
+            position: relative;          
+            
+        }
+
+        /* 메인 CSS */
+        #list_banner{
+            /* margin: 20px 0; */
+        }
+
+        /* 닭가슴살 리스트 */
+        #list_name{
+            border-bottom: 1px solid rgb(219, 218, 218); 
+            margin-top: 30px;
+            padding: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+        #list_menu {
+            background-color: rgb(241, 206, 152);
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        #list_menu ul {
+            margin: 0 30px;
+        }
+        
+        #list_menu li {
+            float: left;
+            padding: 25px;
+            color: white;
+        
+        }
+
+        #list_menu li:hover {
+            color: black;
+        }
+
+        /* 상품 리스트 CSS */
+        #recomm {
+            /* background-color: gold; */
+            height: 400px;                               
+        }           
+            
+        h2 {
+            margin-top: 60px;
+            margin-bottom: 30px;  
+            text-shadow: 2px 2px rgb(216, 212, 212);  
+        }
+        #recomm  img {
+            width: 250px;
+            height: 250px;
+            margin: 20px;  
+            border: 1px solid rgb(151, 148, 148);    
+            padding: 10px;     
+            
+        }
+        #name {
+            font-size: 14px;
+        }
+        #price1 {
+            font-size: 14px;
+            font-weight: bold;
+            /* float: left; */
+            /* margin: 20px; */
+          
+        }
+        #price2{
+            font-weight: bold;
+            font-size: 17px;
+            color: rgb(224, 148, 7);
+            /* float: left; */
+        }
+        #recomm ul {
+            /* border: 1px solid red; */
+            float: left;
+            margin: 0 0 0 40px;            
+            width: 250px;
+        }
+
+
+        /* 하단 번호 CSS */
+        #menu1 { 
+            color: rgb(126, 124, 124);
+            padding: 10px;
+            margin: 50px 0 100px 0;
+            
+        }
+        
+        
+
+
+
+
+
+        /* 공통 링크 CSS */
+        a { 
+            text-decoration: none;
+        }
+        a:link { 
+            color: rgb(97, 93, 93);
+        }
+        a:hover{
+            color: rgba(0, 0, 0, 0.651);
+        }
+        a:visited { 
+            color: rgb(97, 93, 93);
+        }
+        a:active{
+            color: rgb(97, 93, 93);
+        }
+
+        /* 필터박스 */
+        #filter {
+            border: 1px solid rgb(219, 218, 218);
+            width: 100%;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        #filter p {
+            font-size: 13px;
+            padding: 10px;
+        }
+        #p_l{
+            float: left;        
+        }
+        #p_r{
+            float: right;
+        }
+
+
+
+
+
+
+
+        /* 푸터 */
+        footer {
+            height: 280px;
+            background-color: rgb(251, 249, 234);                                    
+
+        }  
+  
+
+
+        footer img {
+            width: 70px;
+            float: left;
+            position: absolute;
+            top : 110px;
+            left: 20%;
+        }
+        #footer_info {
+            float: left;
+            color: rgb(168, 165, 165);
+            position: absolute;
+            top: 130px;
+            left: 360px;
+            text-align: left;
+        }
+        footer li {
+            font-size: 12px;
+        }
+        #line {
+            border-bottom: 2px solid rgb(168, 165, 165);
+            padding: 40px;
+            
+            
+        }
+        #f_line{
+            color: rgb(70, 69, 69);
+            font-weight: bold;
+            margin-left: 100px;
+            /* border: 1px solid red; */
+            font-size: 15px;
+   
+        
+        }
+        #f_line_d {
+            /* border: 1px solid red; */
+            top: 25px;
+            position: absolute;
+            left: 100px;
+        }   
+     
+    
+        @font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+    
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <p id="fix_logo"><a href="login.hrml" onclick="window.open('login.html','name','resizable=no width=600 height=700');return false"><img src="img/fix_logo.png"></a></p>
+        <!-- 헤더 시작--------------- -->
+        <header>
+            <div id="container">
+                <a href="index.html"><img id="logo" src="img/logo.png"></a>
+                <div id="search"><input type="text" placeholder="닭가슴살 소시지"><button type="button"><a href="#"><img src="img/search.png"></a></button></div>
+            
+
+            <nav id="top_menu">
+                <ul>
+                    <li class="green"><a href="login.html" style="text-decoration: none;"><img src="img/login.png" width="30px"></a></li>
+                    <li class="green"><a href="#"><img src="img/cart.png" width="30px"></a></li>
+                    <li><a href="#"><img src="img/mypage.png" width="30px"></a></li>
+                </ul>
+                
+            </nav> <!-- top_ menu-->
+        </section> <!-- section_top-->
+        <section id="main_menu_d1">
+            <nav id="main_menu">
+                <ul>
+                    <li><a href="#">전체</a></li>                    
+                    <li><a href="#">닭가슴살</a></li>
+                    <li><a href="#">도시락</a></li>
+                    <li><a href="#">샐러드/소스</a></li>
+                    <li><a href="#">다이어트</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+              </ul>
+            </nav>
+            </div>
+        </section>
+        </header>
+        <!-- 헤더 끝 -->
+
+        <!-- 메인시작------------- -->
+        <section id="main">
+            <div id="container">
+                <img id="list_banner" src="img/list_banner.png" width="100%">
+                <div id="list_name">| 닭가슴살</div>
+                <div id="list_menu">
+                    <ul>
+                        <li>닭가슴살</li>
+                        <li>슬라이스</li>
+                        <li>생 닭가슴살</li>
+                        <li>냉장/실온보관</li>
+                        <li>저염/염분무첨가</li>                      
+                        <li>스팀/소프트</li>
+                        <li>소지시/후랑크/바</li>
+                        <li>스테이크/큐브</li>
+                        <li>혼합/세트</li>
+                    </ul>
+                </div>
+                <!-- 닭가슴살 메뉴 끝 -->
+
+                <!-- 상품 리스트 필터박스 -->
+                <div id="filter">
+                    <p id="p_l"><span style="color: red;">86</span>개의 상품이 있습니다.</p>
+                    <p id="p_r">신상품&nbsp;&nbsp;|&nbsp;&nbsp;낮은가격&nbsp;&nbsp;|&nbsp;&nbsp;높은가격&nbsp;&nbsp;|&nbsp;&nbsp;인기상품</p>
+                </div>
+
+                <!-- 상품 이미지 리스트 -->
+                <div id="recomm">
+                    <a href="product.html"><img src="img/list/list_15.png"></a>                   
+                    <a href="#"><img src="img/list/list_2.png"></a> 
+                    <a href="#"><img src="img/list/list_3.png"></a> 
+                    <a href="#"><img src="img/list/list_4.png"></a> 
+                    <ul>
+                        <li id="name">닭가슴살 방울소시지 3종 골라담기</li>
+                        <li id="price1"><s>3,900</s></li>
+                        <li id="price2">2,800원</li>
+                    </ul>                      
+                    <ul>
+                        <li id="name">닭가슴살 소시지/꼬치/방울소시지 1팩 골라담기</li>
+                        <li id="price1"><s>2,600</s></li>
+                        <li id="price2">1,900원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 10종 골라담기</li>
+                        <li id="price1"><s>3,600</s> </li>
+                        <li id="price2">2,700원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 10종 골라담기</li>
+                        <li id="price1"><s>3,800</s> </li>
+                        <li id="price2">2,800원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_5.png"></a>                   
+                    <a href="#"><img src="img/list/list_6.png"></a> 
+                    <a href="#"><img src="img/list/list_7.png"></a> 
+                    <a href="#"><img src="img/list/list_8.png"></a> 
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 11종 골라담기</li>
+                        <li id="price1"><s>3,900</s> </li>
+                        <li id="price2">2,900원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 함박스테이크 2종 골라담기</li>
+                        <li id="price1"><s>3,900</s> </li>
+                        <li id="price2">2,900원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">한입 닭가슴살 5종 골라담기</li>
+                        <li id="price1"><s>3,900</s> </li>
+                        <li id="price2">2,900원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">수비드 닭가슴살 5종 골라담기</li>
+                        <li id="price1"><s>3,900</s> </li>
+                        <li id="price2">2,900원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_9.png"></a>                   
+                    <a href="#"><img src="img/list/list_10.png"></a> 
+                    <a href="#"><img src="img/list/list_11.png"></a> 
+                    <a href="#"><img src="img/list/list_12.png"></a> 
+                    <ul>
+                        <li id="name">훈제 닭가슴살 4종 골라담기</li>
+                        <li id="price1"><s>3,900</s></li>
+                        <li id="price2">2,800원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">크런치 닭가슴살 4종 골라담기</li>
+                        <li id="price1"><s>4,000</s></li>
+                        <li id="price2">2,800원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">특수부위 안심 5종 골라담기</li>
+                        <li id="price1"><s>3,900</s></li>
+                        <li id="price2">2,800원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">떡 품은 닭가슴살볼 2종 골라담기</li>
+                        <li id="price1"><s>3,900</s></li>
+                        <li id="price2">2,800원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_13.png"></a>                   
+                    <a href="#"><img src="img/list/list_14.png"></a> 
+                    <a href="#"><img src="img/list/list_1.png"></a> 
+                    <a href="#"><img src="img/list/list_16.png"></a> 
+                    <ul>
+                        <li id="name">닭가슴살 후랑크 소시지 5종 골라담기</li>
+                        <li id="price1"><s>3,900</s></li>
+                        <li id="price2">2,800원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">닭가슴살 후랑크 꼬치 5종 골라담기</li>
+                        <li id="price1"><s>2,600</s></li>
+                        <li id="price2">1,900원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">닭가슴살 수비드/스테이크/큐브/안심 등 1팩 골라담기</li>
+                        <li id="price1"><s>3,600</s> </li>
+                        <li id="price2">2,700원</li>
+                    </ul> 
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 10종 세트</li>
+                        <li id="price1"><s>36,000</s> </li>
+                        <li id="price2">25,500원</li>
+                    </ul>                      
+                </div>                 
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_17.png"></a>                   
+                    <a href="#"><img src="img/list/list_18.png"></a> 
+                    <a href="#"><img src="img/list/list_19.png"></a> 
+                    <a href="#"><img src="img/list/list_20.png"></a> 
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 10종 세트</li>
+                        <li id="price1"><s>38,000</s></li>
+                        <li id="price2">26,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 11종 세트</li>
+                        <li id="price1"><s>39,000</s></li>
+                        <li id="price2">28,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 함박스테이크 2종 세트</li>
+                        <li id="price1"><s>39,000</s></li>
+                        <li id="price2">28,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">한입 닭가슴살 5종 세트</li>
+                        <li id="price1"><s>19,000</s></li>
+                        <li id="price2">13,900원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_21.png"></a>                   
+                    <a href="#"><img src="img/list/list_22.png"></a> 
+                    <a href="#"><img src="img/list/list_23.png"></a> 
+                    <a href="#"><img src="img/list/list_24.png"></a> 
+                    <ul>
+                        <li id="name">수비드 닭가슴살 5종 세트</li>
+                        <li id="price1"><s>19,000</s></li>
+                        <li id="price2">13,900원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">훈제 닭가슴살 4종 세트</li>
+                        <li id="price1"><s>30,000</s></li>
+                        <li id="price2">21,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">특수부위 안심 5종 세트</li>
+                        <li id="price1"><s>19,000</s></li>
+                        <li id="price2">13,900원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">크런치 닭가슴살 4종 세트</li>
+                        <li id="price1"><s>32,000</s> </li>
+                        <li id="price2">23,200원</li>
+                    </ul>                      
+                </div>                 
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_25.png"></a>                   
+                    <a href="#"><img src="img/list/list_26.png"></a> 
+                    <a href="#"><img src="img/list/list_27.png"></a> 
+                    <a href="#"><img src="img/list/list_28.png"></a> 
+                    <ul>
+                        <li id="name">떡 품은 닭가슴살볼 2종 세트</li>
+                        <li id="price1"><s>15,200</s></li>
+                        <li id="price2">11,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">닭가슴살 후랑크 소시지 5종 세트</li>
+                        <li id="price1"><s>19,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">닭가슴살 후랑크 꼬치 5종 세트</li>
+                        <li id="price1"><s>13,000</s></li>
+                        <li id="price2">9,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">닭가슴살 방울소시지 3종 세트</li>
+                        <li id="price1"><s>22,000</s></li>
+                        <li id="price2">16,500원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_29.png"></a>                   
+                    <a href="#"><img src="img/list/list_30.png"></a> 
+                    <a href="#"><img src="img/list/list_31.png"></a> 
+                    <a href="#"><img src="img/list/list_32.png"></a> 
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 갈릭&갈비맛</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 숯불갈비맛</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 떡갈비맛</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 리얼갈릭</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_33.png"></a>                   
+                    <a href="#"><img src="img/list/list_34.png"></a> 
+                    <a href="#"><img src="img/list/list_35.png"></a> 
+                    <a href="#"><img src="img/list/list_36.png"></a> 
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 알싸청양</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 깻잎청양</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 매콤견과</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 옥수수</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_37.png"></a>                   
+                    <a href="#"><img src="img/list/list_38.png"></a> 
+                    <a href="#"><img src="img/list/list_39.png"></a> 
+                    <a href="#"><img src="img/list/list_40.png"></a> 
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 치즈</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 스테이크 불닭</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 갈릭&갈비맛</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 리얼갈릭</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_41.png"></a>                   
+                    <a href="#"><img src="img/list/list_42.png"></a> 
+                    <a href="#"><img src="img/list/list_43.png"></a> 
+                    <a href="#"><img src="img/list/list_44.png"></a> 
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 매콤갈비</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 달콤간장</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 알싸청양</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 매콤견과</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_45.png"></a>                   
+                    <a href="#"><img src="img/list/list_46.png"></a> 
+                    <a href="#"><img src="img/list/list_47.png"></a> 
+                    <a href="#"><img src="img/list/list_48.png"></a> 
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 옥수수</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 치즈</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 깻잎</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">직화그릴 닭가슴살 큐브 불닭</li>
+                        <li id="price1"><s>18,000</s></li>
+                        <li id="price2">13,500원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_49.png"></a>                   
+                    <a href="#"><img src="img/list/list_50.png"></a> 
+                    <a href="#"><img src="img/list/list_51.png"></a> 
+                    <a href="#"><img src="img/list/list_52.png"></a> 
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 갈비맛</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 떢볶이맛</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 화이트어니언</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 청양마요</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_53.png"></a>                   
+                    <a href="#"><img src="img/list/list_54.png"></a> 
+                    <a href="#"><img src="img/list/list_55.png"></a> 
+                    <a href="#"><img src="img/list/list_56.png"></a> 
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 리얼커리</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 허브갈릭맛</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 사천짜장맛</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 양념치킨맛</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>                      
+                </div>
+                <div id="recomm">
+                    <a href="#"><img src="img/list/list_57.png"></a>                   
+                    <a href="#"><img src="img/list/list_58.png"></a> 
+                    <a href="#"><img src="img/list/list_59.png"></a> 
+                    <a href="#"><img src="img/list/list_60.png"></a> 
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 매콤로제</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 찜닭맛</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 땡초맛</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>  
+                    <ul>
+                        <li id="name">소스품은 닭가슴살 고추마요</li>
+                        <li id="price1"><s>19,500</s></li>
+                        <li id="price2">14,500원</li>
+                    </ul>                      
+                </div> 
+
+                <!-- 리스트 상품 이미지 끝 -->
+
+                <!-- 페이지 번호 시작 -->
+                <div id="menu1">＜＜ &nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp; ＞＞</div>
+
+
+
+
+
+
+
+
+
+                <!-- 컨테이너 div -->
+            </div>      
+          
+
+            
+
+
+        </section>
+        <!-- 푸터시작-------------- -->
+        <footer>
+            <div id="container">
+                <div id="f_line_d">
+                <a href="#" id="f_line">회사소개</a>
+                <a href="#" id="f_line">이용약관</a>
+                <a href="#" id="f_line">개인정보처리방침</a>
+                <a href="#" id="f_line">이용안내</a>
+                <a href="#" id="f_line">고객센터</a>
+                </div>
+                <div id="line"></div>
+            <img src="img/logo.png">
+            <ul id="footer_info">
+                <li>상호 : (주) 닭형 | 대표 : 박예림 | 전화: 1544-1234 </li>
+                <li>사업자 등록번호 안내 : [123-45-67890] | 통신판매업 신고 제 2023-서울강남-12345 호</li>
+                <li>주소 : 서울특별시 주소: 서울특별시 종로구 인사동12길 12 대일빌딩 15층 | 개인정보보호책임자 : 박예림(<a href="xxx@gmail.com">xxx@gmail.com</a>)</li>
+                <li>입점/제휴/수출/마케팅 문의 : <a href="xxx@gmail.com">xxx@gmail.com</a> | 호스팅 제공 : 카페24(주)</li>
+                <li>Copyright © 2023 닭형. All rights reserved.</li>
+    
+            </ul>
+    
+            </div>
+    
+        </footer>
+    </div>
+
+
+    
+</body>
+</html>

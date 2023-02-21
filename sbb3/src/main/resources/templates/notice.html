@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+            box-sizing: border-box;
+            font-family: 'NanumSquareNeo-Variable';
+            
+            
+
+        }
+        ul {
+            list-style: none;
+        }
+        #wrap {
+            text-align: center;
+            margin: 0 auto;
+        }
+        #fix_logo{
+            position: fixed;
+            top: 580px;
+            right: 50px;
+        }
+        header {
+            height: 130px;
+            /* border: 1px solid blue; */
+            /* background-color: rgb(245, 209, 209); */
+            position: relative;
+            border-bottom: 1px solid rgb(219, 218, 218);
+        }
+        #main {
+            overflow: hidden;
+            /* border: 1px solid green; */
+            /* background-color: rgb(243, 231, 233); */
+        }
+           
+        
+        #container {
+            width: 1200px;
+            height: inherit;
+            margin: 0 auto;
+            /* border: 1px solid blue; */
+            position: relative;
+
+        }
+
+
+    
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        #logo {
+            width: 60px;
+            position: absolute;
+            top: 10px;
+            left: 60px;
+            
+        }
+        #search {
+            position: absolute;
+            top: 30px;
+            right: 220px;
+        }
+        #search input{
+            border-radius: 30px;
+            width: 200px;
+            height: 30px;
+            background-color: rgb(236, 231, 231);
+            border: 1px solid white;
+            text-align: center;         
+                
+            
+        }
+    
+          
+        input:focus {outline: none;} /* outline 테두리 없애기 */
+
+       
+
+        #search img {
+            width: 20px;
+            background-color: rgba(255, 255, 255, 0);
+            position: absolute;
+            top: 5px;
+            right: 20px;
+        
+        }
+       
+        #top_menu { 
+            /* border: 1px solid red; */
+            position: absolute;
+            right: 50px;
+            top: 30px;
+        }
+      
+        #top_menu li {
+            display: inline;
+            padding: 8px;
+       }
+            
+        p {
+            font-size: 20px;
+
+        }
+
+        /* 헤더 메인메뉴  */
+
+        #main_menu{ 
+            float: left;
+            /* border: 1px solid red; */
+            position: absolute;
+            left: 200px;
+            top: 90px;        
+            
+                    
+            
+        }
+    
+        #main_menu li {
+            display: inline;
+            font-size: 18px;
+            margin: 30px;
+            font-weight: bold;
+            position: relative;          
+            
+        }
+
+        /* 메인 CSS */
+        #banner {
+            margin: 30px 0;
+        }
+        #tb{
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 14px;
+            color: rgb(126, 124, 124);          
+            border-bottom: 1px solid rgb(219, 218, 218);           
+
+        }
+        #subject {
+            border-top: 1px solid rgb(219, 218, 218);
+            border-bottom: 1px solid rgb(219, 218, 218);
+            background-color: rgb(247, 245, 245);
+           
+        }
+        #tb td {
+            /* border: 1px solid red; */
+        }
+        #tb_num{
+            padding: 10px;
+            width: 90px;
+            
+        }
+        #tb_name{
+           
+        }
+        #tb_man{
+            width: 90px;
+        }
+        #tb_date{
+            width: 150px;
+        }
+
+
+        #num{
+            padding: 10px;
+        }
+        #name{
+            text-align: left;
+            padding-left: 20px;            
+        }
+        #menu1 { 
+            color: rgb(126, 124, 124);
+            padding: 10px;
+            margin: 30px 0;
+            
+        }
+        #menu2 {
+            /* border: 1px solid red; */
+            margin: 40px 0 100px 0;
+   
+            height: 30px;
+            /* float: left; */
+        }
+        #select_date{
+            position: absolute;            
+            
+        }
+        #select_name{
+            position: absolute;
+            left: 90px;
+        }
+        #select_input{
+            position: absolute;
+            left: 165px;
+        }
+        #select_search{
+            position: absolute;
+            left: 330px;
+        }
+        #menu2 button {
+            width: 70px;
+            background-color: rgb(177, 176, 176);
+            color: white;
+            border: 1px solid;
+        }
+        select{
+            border: 1px solid rgb(161, 160, 160);
+        }
+        #menu2 input {
+            border: 1px solid rgb(161, 160, 160);
+
+        }
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+
+        /* 메인끝 */
+        
+        a { 
+            text-decoration: none;
+        }
+        a:link { 
+            color: rgb(97, 93, 93);
+        }
+        a:hover{
+            color: rgba(0, 0, 0, 0.651);
+        }
+        a:visited { 
+            color: rgb(97, 93, 93);
+        }
+        a:active{
+            color: rgb(97, 93, 93);
+        }
+
+        .clear {clear: both;}
+
+
+
+        /* 푸터 */
+        footer {
+            height: 280px;
+            background-color: rgb(251, 249, 234);                                    
+
+        }  
+  
+
+
+        footer img {
+            width: 70px;
+            float: left;
+            position: absolute;
+            top : 110px;
+            left: 20%;
+        }
+        #footer_info {
+            float: left;
+            color: rgb(168, 165, 165);
+            position: absolute;
+            top: 130px;
+            left: 360px;
+            text-align: left;
+        }
+        footer li {
+            font-size: 12px;
+        }
+        #line {
+            border-bottom: 2px solid rgb(168, 165, 165);
+            padding: 40px;
+            
+            
+        }
+        #f_line{
+            color: rgb(70, 69, 69);
+            font-weight: bold;
+            margin-left: 100px;
+            /* border: 1px solid red; */
+            font-size: 15px;
+   
+        
+        }
+        #f_line_d {
+            /* border: 1px solid red; */
+            top: 25px;
+            position: absolute;
+            left: 100px;
+        }
+
+        @font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+       
+
+       
+
+    
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <p id="fix_logo"><a href="login.hrml" onclick="window.open('login.html','name','resizable=no width=600 height=700');return false"><img src="img/fix_logo.png"></a></p>
+        <!-- 헤더 시작--------------- -->
+        <header>
+            <div id="container">
+                <a href="index.html"><img id="logo" src="img/logo.png"></a>
+                <div id="search"><input type="text" placeholder="닭가슴살 소시지"><button type="button"><a href="#"><img src="img/search.png"></a></button></div>
+            
+
+            <nav id="top_menu">
+                <ul>
+                    <li class="green"><a href="login.html" style="text-decoration: none;"><img src="img/login.png" width="30px"></a></li>
+                    <li class="green"><a href="#"><img src="img/cart.png" width="30px"></a></li>
+                    <li><a href="#"><img src="img/mypage.png" width="30px"></a></li>
+                </ul>
+                
+            </nav> <!-- top_ menu-->
+        </section> <!-- section_top-->
+        <section id="main_menu_d1">
+            <nav id="main_menu">
+                <ul>
+                    <li><a href="#">전체</a></li>                    
+                    <li><a href="list.html">닭가슴살</a></li>
+                    <li><a href="#">도시락</a></li>
+                    <li><a href="#">샐러드/소스</a></li>
+                    <li><a href="#">다이어트</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+              </ul>
+            </nav>
+            </div>
+        </section>
+        </header>
+        <!-- 헤더 끝 -->
+
+        <!-- 메인시작------------- -->
+        <section id="main">
+            <div id="container">
+                <img id="banner" src="img/notice_banner.png" width="1200px">
+                <table id="tb">
+                    <tr id="subject">
+                        <td id="tb_num">번호</td>
+                        <td id="tb_name">제목</td>
+                        <td id="tb_man">작성자</td>
+                        <td id="tb_date">작성일</td>
+                    </tr>
+                    <tr>
+                        <td id="num">13</td>
+                        <td id="name">닭형 배송비 및 무료배송 기준 변경 안내</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2022-07-01</td>
+                    </tr>
+                    <tr>
+                        <td id="num"td>12</td>
+                        <td id="name">닭형 배송비 및 무료배송 기준 변경 안내</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2022-07-01</td>
+                    </tr>
+                    <tr>
+                        <td id="num">11</td>
+                        <td id="name">택배 노조 파업에 따른 일부 지역 배송 안내</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2022-01-17</td>
+                    </tr>
+                    <tr>
+                        <td id="num">10</td>
+                        <td id="name">제주도 선박 점검으로 인한 배송지연 안내</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2022-07-01</td>
+                    </tr>
+                    <tr>
+                        <td id="num">9</td>
+                        <td id="name">닭형 설 연휴 예치금 증정 이벤트 당첨자 발표</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2022-02-09</td>
+                    </tr>
+                    <tr>
+                        <td id="num">8</td>
+                        <td id="name">네이버 신규 알림서비스 오픈!</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2022-02-01</td>
+                    </tr>
+                    <tr>
+                        <td id="num">7</td>
+                        <td id="name">퍼펙트 파워쉐이크 1차 사전예약 배송지연 안내</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2022-01-05</td>
+                    </tr>
+                    <tr>
+                        <td id="num">6</td>
+                        <td id="name">한미 <근력개선 머슬짱> 증정 이벤트 당첨자 발표</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2021-12-30</td>
+                    </tr>
+                    <tr>
+                        <td id="num">5</td>
+                        <td id="name">닭형X네고왕</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2021-12-02</td>
+                    </tr>
+                    <tr>
+                        <td id="num">4</td>
+                        <td id="name">좋은 4+2 특가</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2021-10-30</td>
+                    </tr>
+                    <tr>
+                        <td id="num">3</td>
+                        <td id="name">본사 이전에 따른 소재지 변경 안내</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2021-08-05</td>
+                    </tr>
+                    <tr>
+                        <td id="num">2</td>
+                        <td id="name">닭형에게 물어보살</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2021-07-01</td>
+                    </tr>
+                    <tr>
+                        <td id="num">1</td>
+                        <td id="name">단백질수확능력시험</td>
+                        <td id="man">닭형</td>
+                        <td id="date">2021-05-26</td>
+                    </tr>                
+                </table>
+                <div id="menu1">＜＜ &nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp;&nbsp; ＞＞</div>
+                <div id="menu2">
+                    <div id="select_date">
+                        <select style="padding: 2px; width: 80px;">
+                            <option>일주일</option>
+                            <option>한달</option>
+                            <option>세달</option>
+                            <option>전체</option>
+                        </select>
+                    </div>
+                    <div id="select_name">
+                        <select style="padding: 2px;">
+                            <option>제목</option>
+                            <option>내용</option>
+                            <option>글쓴이</option>
+                            <option>아이디</option>
+                            <option>별명</option>
+                        </select>
+                    </div>
+                    <div id="select_input"><input type="text" style="width: 160px; padding: 3px;"></div>
+                    <div id="select_search"><button type="button" style="padding: 2px;">찾기</button></div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+    
+
+
+        </section>
+        <!-- 푸터시작-------------- -->
+        <footer>
+            <div id="container">
+                <div id="f_line_d">
+                <a href="#" id="f_line">회사소개</a>
+                <a href="#" id="f_line">이용약관</a>
+                <a href="#" id="f_line">개인정보처리방침</a>
+                <a href="#" id="f_line">이용안내</a>
+                <a href="#" id="f_line">고객센터</a>
+                </div>
+                <div id="line"></div>
+            <img src="img/logo.png">
+            <ul id="footer_info">
+                <li>상호 : (주) 닭형 | 대표 : 박예림 | 전화: 1544-1234 </li>
+                <li>사업자 등록번호 안내 : [123-45-67890] | 통신판매업 신고 제 2023-서울강남-12345 호</li>
+                <li>주소 : 서울특별시 주소: 서울특별시 종로구 인사동12길 12 대일빌딩 15층 | 개인정보보호책임자 : 박예림(<a href="xxx@gmail.com">xxx@gmail.com</a>)</li>
+                <li>입점/제휴/수출/마케팅 문의 : <a href="xxx@gmail.com">xxx@gmail.com</a> | 호스팅 제공 : 카페24(주)</li>
+                <li>Copyright © 2023 닭형. All rights reserved.</li>
+    
+            </ul>
+    
+            </div>
+    
+        </footer>
+    </div>
+
+
+    
+</body>
+</html>

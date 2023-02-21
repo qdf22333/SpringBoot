@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품페이지</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            
+            box-sizing: border-box;
+            font-family: 'NanumSquareNeo-Variable';
+
+        }
+       
+        ul {
+            list-style: none;
+        }
+        #wrap {
+            text-align: center;
+            margin: 0 auto;
+        }
+        #fix_logo{
+            position: fixed;
+            top: 580px;
+            right: 50px;
+        }
+        header {
+            height: 130px;
+            /* border: 1px solid blue; */
+            /* background-color: rgb(245, 209, 209); */
+            position: relative;
+            border-bottom: 1px solid rgb(219, 218, 218);
+        }
+        #main {
+            overflow: hidden;
+            /* border: 1px solid green; */
+            /* background-color: rgb(243, 231, 233); */
+        }
+           
+        
+        #container {
+            width: 1200px;
+            height: inherit;
+            margin: 0 auto;
+            /* border: 1px solid blue; */
+            position: relative;
+
+        }
+
+
+    
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        #logo {
+            width: 60px;
+            position: absolute;
+            top: 10px;
+            left: 60px;
+            
+        }
+        #search {
+            position: absolute;
+            top: 30px;
+            right: 220px;
+        }
+        #search input{
+            border-radius: 30px;
+            width: 200px;
+            height: 30px;
+            background-color: rgb(236, 231, 231);
+            border: 1px solid white;
+            text-align: center;         
+                
+            
+        }
+    
+          
+        input:focus {outline: none;} /* outline 테두리 없애기 */
+
+       
+
+        #search img {
+            width: 20px;
+            background-color: rgba(255, 255, 255, 0);
+            position: absolute;
+            top: 5px;
+            right: 20px;
+        
+        }
+       
+        #top_menu { 
+            /* border: 1px solid red; */
+            position: absolute;
+            right: 50px;
+            top: 30px;
+        }
+      
+        #top_menu li {
+            display: inline;
+            padding: 8px;
+       }
+            
+        p {
+            font-size: 20px;
+
+        }
+
+        /* 헤더 메인메뉴  */
+
+        #main_menu{ 
+            float: left;
+            /* border: 1px solid red; */
+            position: absolute;
+            left: 200px;
+            top: 90px;        
+            
+                    
+            
+        }
+    
+        #main_menu li {
+            display: inline;
+            font-size: 18px;
+            margin: 30px;
+            font-weight: bold;
+            position: relative;          
+            
+        }
+
+        /* 메인 CSS */
+       
+        #ex{
+            /* margin: 20px 30px; */
+            height: 750px;
+            /* border: 1px solid gold; */
+            /* overflow: hidden; */
+        }
+        #lightboxImage{
+            /* border: 1px solid blue; */
+            width: 500px;
+            position: absolute;
+            top: 70px;
+            left: 0;
+        }
+        #text{
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 100px;
+            right: 0px;
+            text-align: left;
+            border-collapse: collapse;
+            font-size: 12px;
+            border-top: 3px solid rgb(219, 218, 218);
+        }
+        #text td {
+            border-top: 1px solid rgb(219, 218, 218);
+            border-bottom: 1px solid rgb(219, 218, 218); 
+            padding: 10px 20px;
+            padding-right: 40px;
+            
+        }
+        #d1 {
+            font-size: 22px;
+
+        }
+        #s1{
+            font-size: 11px;
+        }
+       
+       
+
+        .pic {
+            width: 100px;
+        }
+        #mins{
+            position: absolute;
+            top: 580px;
+            left: 0px;
+        }    
+
+        #gola{
+            padding: 6px;
+        }
+        #back{
+            background-color: rgb(250, 246, 246);         
+        }
+        #text2{
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 450px;
+            right: 0px;
+            font-size: 12px;
+            border-collapse: collapse;
+        }
+        #text2 td{
+            background-color: rgb(250, 246, 246); 
+            border-top: 1px solid rgb(219, 218, 218); 
+            border-bottom: 1px solid rgb(219, 218, 218); 
+            padding: 10px 30px;
+        }
+        #mini {
+            font-size: 11px;
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 430px;
+            right: 520px;
+           
+        }
+        #t_name{
+            width: 335px;
+            text-align: left;
+        }
+        #t_count {
+            width: 150px;
+        }
+        #t_price {
+            width: 150px;
+        }
+        #sum_price{
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 500px;
+            right: 0px;
+            font-size: 12px;
+            margin-top: 20px;
+            
+        }
+
+        /* 구매하기 버튼 CSS */
+        #buy{
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 550px;
+            right: 0px;
+        }
+        #buy button{
+            padding: 15px;
+            font-size: 15px;
+            border: 1px solid rgb(219, 218, 218);
+        }
+        #now{
+            width: 310px;
+            background-color: rgb(58, 58, 58);
+            color: white;
+        }
+        .keep{
+            width: 160px;
+            background-color: white;
+        }
+        #buy button:hover{
+            background-color: rgba(186, 181, 181, 0.732);
+        }
+        #pay_logo{
+            position: absolute;
+            top: 610px;
+            right: 0px;
+        }
+
+
+        /* 추가상품 */
+        #add {
+            border-top: 1px solid rgb(219, 218, 218);
+            padding: 12px;
+            font-size: 12px;
+            text-align: left;
+            background-color: rgb(250, 246, 246);
+
+        }
+        #add_tb{
+           border-collapse: collapse;
+        }
+        #add_tb td {
+            border-top: 1px solid rgb(219, 218, 218);
+            border-bottom: 1px solid rgb(219, 218, 218);
+            padding: 12px;
+            font-size: 14px;
+        }
+        #add_tb img {
+            width: 150px;
+            margin-left: 5px;
+        }
+        #add_name{
+           width: 500px; 
+        }
+        #add_price{
+            width: 150px;
+        }
+        #add_option{
+            width: 400px;
+        }
+
+
+        /* 이벤트 배너 */
+        #event{
+            margin: 25px 0;
+            border-top: 1px solid rgb(219, 218, 218);
+            border-bottom: 1px solid rgb(219, 218, 218);
+            padding: 15px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        /* 상품상세정보 */
+        #inf_tb{
+            border-collapse: collapse;
+            background-color: rgb(250, 246, 246);
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        #inf_tb td{
+            padding: 10px 30px;
+            border-top: 1px solid rgb(219, 218, 218);
+            border-left: 1px solid rgb(219, 218, 218);
+            border-right: 1px solid rgb(219, 218, 218);
+            font-size: 14px;
+        }
+        #inf_tb td:hover{
+            background-color: rgba(186, 181, 181, 0.732);
+        }
+        #main_content{
+            border-top: 1px solid rgb(153, 149, 149);
+            padding-top: 20px;
+        }
+        #main_content img{
+            margin: -2px;
+        }
+
+
+        /* 상품 후기 */
+        #review{
+            border-top: 1px solid rgb(153, 149, 149);
+          
+        }
+        #graph_box{
+            border: 1px solid rgb(219, 218, 218);
+            font-size: 12px;
+            position: relative;
+            margin-top: 30px;
+           
+
+        }
+        #graph_text{
+            width: 200px;
+            height: 140px;
+            /* background-color: azure; */
+            position: absolute;
+            padding-top: 40px;
+        }
+        #graph1{
+            /* border: 1px solid black; */
+            width: 740px;
+            height: 140px;
+            margin-left: 200px;
+            color: gray;  
+            padding-top: 5px;
+           
+       
+
+        }
+        #graph1 li{
+            margin: 10px 0;
+            margin-left: 10px;
+        }
+        #total{
+            width: 600px;
+            height: 15px;
+            /* border: 1px solid black; */
+            background-color: rgb(245, 243, 243);
+            float: left;  
+            transition-duration: 0.3s;
+            
+
+        }
+        #total:hover{
+            box-shadow: 3px 3px 3px gray;
+        }
+        
+        #per{
+            /* width: 80%; */
+            height: 15px;
+            background-color: rgb(86, 121, 161);
+        }
+        #star{
+            float: left;
+            margin-right: 10px;
+        }
+        #num {
+            clear: both;
+            text-align: left;
+            
+        }
+        #graph_img {
+            /* border: 1px solid green; */
+            width: 260px;
+            height: 140px;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            padding: 5px 0 ;
+        }
+        #graph_img img{
+            width: 65px;
+        }
+        #graph2{
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+        #graph2 button{
+            margin: 0px -1.5px;
+            border: 1px solid rgb(219, 218, 218);       
+            border-top: none;
+            border-radius: 0;
+            background-color: white;
+        }
+        #g2:hover{
+            background-color: rgb(86, 121, 161);
+            color: white;
+        }
+
+        #g1{
+            padding: 10px;
+            width: 698px;
+            
+        }
+        #g2{
+            padding: 10px;
+            width: 250px;
+            border-left: none !important;
+        }
+        #menu1 { 
+            color: rgb(126, 124, 124);
+            padding: 10px;
+            margin: 30px 0;
+            
+        }
+
+        /* 후기 사진 */
+        #order{
+            text-align: left;
+            margin: 5px 30px;
+
+        }
+        #order p{
+            font-size: 13px;
+            display: inline-block;
+            margin-right: 20px;
+        }
+        #order p:hover{
+            font-weight: bold;
+            text-decoration: underline;            
+        }
+       
+
+        #review_list{
+            /* border-top: 1px solid rgb(219, 218, 218); */
+            border-bottom: 1px solid rgb(219, 218, 218);
+            font-size: 13px;
+            position: relative;
+        }
+        #review_list ul{
+            padding: 30px 20px;
+        }
+        #review_list img {
+            width: 130px;
+            float: left;
+            margin: 0 5px;
+            
+        }
+        #review_list p{
+            font-size: 13px;
+            text-align: left;
+            margin: 3px 0;
+        }
+        #re_p1{
+            margin: 20px 25px 0 25px !important;
+        }
+        #re_p2{
+            margin: 10px 25px !important;
+        }
+        #re_p3{
+            margin: 50px 20px 30px 25px !important;
+        }
+        #writer{
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+        #recomm_btn{
+            /* border: 1px solid blue; */
+            position: absolute;            
+            left: 200px;
+            bottom: 26px;
+        }
+        #recomm_btn button{
+            border: 1px solid rgb(219, 218, 218);
+            border-radius: 30px;
+            width: 70px;
+            padding: 3px 0;
+            background-color: white;
+        }
+        #recomm_btn button:hover{
+            background-color: rgb(86, 121, 161);
+            color: white;
+        }
+        #comment_btn{
+            position: absolute;
+            right: 20px;
+            bottom: 26px;
+        }
+        #comment_btn button{
+            border: 1px solid rgb(219, 218, 218);
+            border-radius: 30px;
+            width: 90px;
+            padding: 3px 0;
+            background-color: white;
+            
+        }
+        #comment_btn button:hover{
+            background-color: rgb(86, 121, 161);
+            color: white;
+        }
+       
+        #inf_bar{
+            border-bottom: 1px solid rgb(219, 218, 218);
+            margin-top: -30px;s
+        } 
+
+
+        /* 상품문의 */
+        #qna{
+            border-collapse: collapse;
+            width: 100%;
+            border-bottom: 1px solid rgb(219, 218, 218); 
+            margin-top: 30px;     
+            font-size: 13px;     
+
+        }
+        #subject {
+            border-top: 1px solid rgb(219, 218, 218);
+            border-bottom: 1px solid rgb(219, 218, 218);
+            background-color: rgb(247, 245, 245);
+           
+        }
+        #tb td {
+            /* border: 1px solid red; */
+        }
+        #tb_num{
+            padding: 10px;
+            width: 90px;
+            
+        }
+   
+        #tb_man{
+            width: 90px;
+        }
+        #tb_date{
+            width: 150px;
+        }
+
+
+        #num{
+            padding: 20px;
+            text-align: center;
+        }
+     
+        #name{
+            text-align: left;
+            padding-left: 20px;            
+        }
+        #qna img{
+            width: 16px;
+        }
+        #qna_box{
+            margin-top: 20px;
+            font-size: 13px;
+            margin-right: 10px;
+            float: right;
+            
+        }
+        #qna_box div{
+            border: 1px solid rgb(219, 218, 218);
+            padding: 10px 0; 
+            float: left;
+            margin: 0 1px;           
+
+        }
+        #qna_box div:hover{
+            opacity: 0.7;
+        }
+        #q1{
+            width: 120px;
+            background-color: rgb(58, 58, 58);
+            color: white;
+        }
+        #q2{
+            width: 80px;
+            background-color: rgb(230, 227, 227);            
+        }
+
+        /* 상품구매안내 */
+        .info_name{
+            /* border: 1px solid red; */
+            border-bottom: 1px solid rgb(219, 218, 218);
+            text-align: left;
+            padding: 30px 0 10px 0;            
+        }
+        .info_name h2{
+            /* font-weight: lighter; */
+            font-size: 15px;
+
+        }
+        .info_content{
+            /* border: 1px solid blue; */
+            margin-top: 20px;
+            margin-bottom: 30px;
+            
+        }
+        .info_content p {
+            font-size: 12px;
+            color: black;
+            text-align: left;
+            padding-left: 15px;
+            line-height: 18px;
+        }
+ 
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+        /* 공통 CSS */
+        a { 
+            text-decoration: none;
+        }
+        a:link { 
+            color: rgb(97, 93, 93);
+        }
+        a:hover{
+            color: rgba(0, 0, 0, 0.651);
+        }
+        a:visited { 
+            color: rgb(97, 93, 93);
+        }
+        a:active{
+            color: rgb(97, 93, 93);
+        }
+
+        .clear {clear: both;}
+
+
+
+        /* 푸터 */
+        footer {
+            height: 280px;
+            background-color: rgb(251, 249, 234);                                    
+
+        }  
+  
+
+
+        footer img {
+            width: 70px;
+            float: left;
+            position: absolute;
+            top : 110px;
+            left: 20%;
+        }
+        #footer_info {
+            float: left;
+            color: rgb(168, 165, 165);
+            position: absolute;
+            top: 130px;
+            left: 360px;
+            text-align: left;
+        }
+        footer li {
+            font-size: 12px;
+        }
+        #line {
+            border-bottom: 2px solid rgb(168, 165, 165);
+            padding: 40px;
+            
+            
+        }
+        #f_line{
+            color: rgb(70, 69, 69);
+            font-weight: bold;
+            margin-left: 100px;
+            /* border: 1px solid red; */
+            font-size: 15px;
+   
+        
+        }
+        #f_line_d {
+            /* border: 1px solid red; */
+            top: 25px;
+            position: absolute;
+            left: 100px;
+        }
+
+        @font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+       
+
+       
+
+    
+
+    </style>
+
+</head>
+<body>
+    <div id="wrap">
+        <p id="fix_logo"><a href="login.hrml" onclick="window.open('login.html','name','resizable=no width=600 height=700');return false"><img src="img/fix_logo.png"></a></p>
+        <!-- 헤더 시작--------------- -->
+        <header>
+            <div id="container">
+                <a href="index.html"><img id="logo" src="img/logo.png"></a>
+                <div id="search"><input type="text" placeholder="닭가슴살 소시지"><button type="button"><a href="#"><img src="img/search.png"></a></button></div>
+            
+
+            <nav id="top_menu">
+                <ul>
+                    <li class="green"><a href="login.html" style="text-decoration: none;"><img src="img/login.png" width="30px"></a></li>
+                    <li class="green"><a href="#"><img src="img/cart.png" width="30px"></a></li>
+                    <li><a href="#"><img src="img/mypage.png" width="30px"></a></li>
+                </ul>
+                
+            </nav> <!-- top_ menu-->
+        <section id="main_menu_d1">
+            <nav id="main_menu">
+                <ul>
+                    <li><a href="#">전체</a></li>                    
+                    <li><a href="list.html">닭가슴살</a></li>
+                    <li><a href="#">도시락</a></li>
+                    <li><a href="#">샐러드/소스</a></li>
+                    <li><a href="#">다이어트</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+              </ul>
+            </nav>
+            </div>
+        </section>
+        </header>
+        <!-- 헤더 끝 -->
+
+        <!-- 메인시작------------- -->
+        <section id="main">
+            <div id="container">
+                <div id="ex">
+                    <div id="lightbox">
+                        <img src="img/list/list_15.png" id="lightboxImage" style="width: 500px;">
+                    </div>
+                </div>
+                <div id="mins">
+                    <img src="img/prod/prod1.png" data-src="img/prod/prod1.png" class="pic">
+                    <img src="img/prod/prod2.png" data-src="img/prod/prod2.png" class="pic">
+                    <img src="img/prod/prod3.png" data-src="img/prod/prod3.png" class="pic">
+                </div>
+                <div id="content">
+                    <table id="text">
+                        <tr id="d1">
+                            <td colspan="2" style="padding: 20px 20px;"><b>닭가슴살 방울소시지 3종 골라담기</b></td>
+                        </tr>
+                        <tr id="s1">
+                            <td id="t1">소비자가</td>
+                            <td id="t2"><s>3,900</s></td>
+                        </tr>
+                        <tr style="font-size: 15px;">
+                            <td id="t1"><b>판매가</b></td>
+                            <td id="t2" style="color: rgb(224, 148, 7);"><b>2,800</b></td>
+                        </tr>
+                        <tr>
+                            <td id="t1">배송비</td>
+                            <td id="t2">3,000원 <b>(39,000원 이상 구매시 무료)</b></td>
+                        </tr>
+                        <tr>
+                            <td id="t1">소비기한</td>
+                            <td id="t2">발송기준, 소비기한 30일 이상의 제품</td>
+                        </tr>
+                        <tr>
+                            <td id="t1">배송안내</td>
+                            <td id="t2">오전 2시 이전 주문시, 당일 출고 (주말 / 공휴일 제외) 주문량에 따라 순차발송 될 수 있습니다.<br/>
+                                <span style="color: red;">제주지역 추가배송비: 3,000원</span></td>
+                        </tr>
+                        <tr id="back">
+                            <td id="t1">제품선택</td>
+                            <td id="t2">
+                                <select id="gola">
+                                    <option value="null" selected>- [필수] 옵션을 선택해 주세요 - </option>
+                                    <option>닭가슴살 방울소시지 오리지널 1팩</option>
+                                    <option>닭가슴살 방울소시지 치즈 1팩</option>
+                                    <option>닭가슴살 방울소시지 알싸청양 1팩</option>
+                                </select>                                
+                            </td>
+                        </tr>                   
+                    </table>
+                    <div id="mini">(최소주문수량 1개 이상)</div>
+                    <table id="text2">
+                        <tr>
+                            <td id="t_name">상품명</td>
+                            <td id="t_count">상품수</td>
+                            <td id="t_price">가격</td>
+                        </tr>
+                    </table>
+                    <div id="sum_price"><span style="font-weight: bold;">총 상품금액</span>(수량) : <span style="font-weight: bold; font-size: 15px;">0</span> (0개)</div>
+                    <div id="buy">
+                        <button id="now" type="button">바로 구매하기</button>
+                        <button class="keep" type="button">장바구니</button>
+                        <button class="keep" type="button">관심상품</button>
+                    </div>
+                    <div id="pay_logo"><img src="img/prod/n_pay.png" width="280px"></div>                    
+                </div>
+                <div id="add">
+                    <span style="font-size: 14px; font-weight: bold;">추가구성상품</span> &nbsp;&nbsp;&nbsp;&nbsp; <span style="color: gray;">선택하신 상품은 메인 상품과 함께 결제가 가능합니다.</span>
+                </div>
+                    <table id="add_tb">                       
+                        <tr>
+                            <td>상품이미지</td>
+                            <td id="add_name">상품명</td>
+                            <td id="add_price">가격</td>
+                            <td id="add_option">상품옵션</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/best1.png"></td>
+                            <td>[놓치면 후회한 닭] 첫구매 계이득 0원!</td>
+                            <td>3,200원</td>
+                            <td>
+                                <select id="add_select1">
+                                    <option value="null" selected>- [필수] 옵션을 선택해 주세요 - </option>
+                                    <option>소스품은 닭가슴살 떡볶이맛 1팩</option>
+                                    <option>닭가슴살 스테이크 숯불갈비맛 1팩</option>
+                                    <option>한입 닭가슴살 닭갈비맛 1팩</option>
+                                    <option>훈제 닭가슴살 오리지널 1팩</option>
+                                    <option>닭가슴살 쫄깃만두 고기 1팩</option>
+                                </select>     
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/list/list_5.png"></td>
+                            <td>추가 구매하기</td>
+                            <td>2,700원</td>
+                            <td>
+                                <select id="add_select1">
+                                    <option value="null" selected>- [필수] 옵션을 선택해 주세요 - </option>
+                                    <option>소스품은 닭가슴살</option>
+                                    <option>직화그릴 닭가슴살 스테이크</option>
+                                    <option>특수부위 안심</option>
+                                    <option>다이어트 도시락</option>
+                                    <option>곤약볶음밥</option>
+                                </select>  
+                            </td>
+                        </tr>                   
+                    </table>
+                    <!-- 이벤트 배너 -->
+                    <div id="event">| 이벤트</div>
+                    <img src="img/prod/prod_banner.png" width="100%">
+
+                    <!-- 상세정보 -->
+                    <table id="inf_tb">
+                        <tr>
+                            <td>상품상세정보</td>
+                            <td>상품후기</td>
+                            <td>상품문의</td>                            
+                            <td>상품구매안내</td>
+                        </tr>
+                    </table>
+                    <div id="main_content">
+                        <img src="img/prod/main1.gif">
+                        <img src="img/prod/main2.jpg">
+                        <img src="img/prod/main3.jpg">
+                        <img src="img/prod/main4.jpg">
+                        <img src="img/prod/main5.jpg">
+                        <img src="img/prod/main6.jpg">
+                        <img src="img/prod/main7.jpg">
+                        <img src="img/prod/main8.jpg">
+                        <img src="img/prod/main9.jpg">
+                        <img src="img/prod/main10.jpg">
+                        <img src="img/prod/main11.jpg">
+                        <img src="img/prod/main12.jpg">
+                        <img src="img/prod/main13.jpg">
+                        <img src="img/prod/main14.jpg">
+                        <img src="img/prod/main15.jpg">
+                        <img src="img/prod/main16.jpg">
+                        <img src="img/prod/main17.jpg">          
+                    </div>
+
+                    <!-- 후기 -->                    
+                    <table id="inf_tb">
+                        <tr>
+                            <td>상품상세정보</td>
+                            <td>상품후기</td>
+                            <td>상품문의</td>
+                            
+                            <td>상품구매안내</td>
+                        </tr>
+                    </table>
+                    <div id="review">
+                        <div id="graph_box">
+                            <div id="graph_text"><spna style="font-size: 35px; font-weight: bold;">4.8</spna> <br> 리뷰 <spna style="font-weight: bold;">500</spna></div>
+                            <div id="graph1">
+                                <ul>
+                                    <li>
+                                        <span id="star">5 Stars</span>
+                                        <div id="total"><div id="per" style="width: 90%;"></div></div>
+                                        <span id="num">(448)</span>
+                                    </li>
+                                    <li>
+                                        <span id="star">4 Stars</span>
+                                        <div id="total"><div id="per" style="width: 10%;"></div></div>
+                                        <span id="num">(24)</span>
+                                    </li>
+                                    <li>
+                                        <span id="star">3 Stars</span>
+                                        <div id="total"><div id="per" style="width: 8%;"></div></div>
+                                        <span id="num">(22)</span>
+                                    </li>
+                                    <li>
+                                        <span id="star">2 Stars</span>
+                                        <div id="total"><div id="per" style="width: 1%;"></div></div>
+                                        <span id="num">(2)</span>
+                                    </li>
+                                    <li>
+                                        <span id="star">1 Stars</span>
+                                        <div id="total"><div id="per" style="width: 3%;"></div></div>
+                                        <span id="num">(4)</span>
+                                    </li>                           
+                                </ul>
+                            </div>
+                            <div id="graph_img">
+                                <img src="img/best1.png">
+                                <img src="img/best2.png">
+                                <img src="img/best3.png"><br>
+                                <img src="img/best4.png">
+                                <img src="img/best5.png">
+                                <img src="img/best6.png">
+                            </div>
+                        </div>                            
+                        <div id="graph2">
+                            <button id="g1" type="button"><span style="color: rgb(86, 121, 161); font-weight: bold;">98.8%</span> 의 구매자들이 이 상품에 만족하고있어요!</button>
+                            <button id="g2" type="button">후기게시판</button>
+                            <button id="g2" type="button" style="width: 251px;">리뷰  등록하기</button>
+                        </div>
+
+                        <!-- 리뷰 사진 -->
+                        <div id="order">
+                            <p>평점순 <span id="not">(500)</span></p>
+                            <p>최신순</p>
+                        </div>
+                        <div id="review_list" style="border-top: 1px solid rgb(219, 218, 218);">
+                            <ul>
+                                <li><img src="img/prod/comm1.jpg"></li>
+                                <li><img src="img/prod/comm2.jpg"></li>
+                                <li><img src="img/prod/comm3.jpg"></li>                               
+                            </ul>
+                            <div class="clear"></div>
+                            <p id="re_p1"><span style="color: rgb(86, 121, 161);;">★★★★★</span>&nbsp; <span style="color: gray;">- 아주 좋아요</span></p>
+                            <p id="re_p2">먹기도편하고 아이도 좋아해요</p>
+                            <p id="re_p3">이 리뷰를 0명이 좋아합니다.</p>
+                            <div id="writer">
+                                <span style="color :rgb(196, 194, 194);">작성자</span><br>Abc**
+                            </div>
+                            <div id="recomm_btn">
+                                <button type="button">추천</button>
+                                <button type="button">비추천</button>
+                            </div>
+                            <div id="comment_btn">
+                                <button type="button" style="text-align: left;"><img src="img/prod/reply.png" style="width: 15px; margin-left: 30px;">1</button>
+                                <button type="button">더보기</button>
+                            </div>
+                        </div>
+                        <div id="review_list">
+                            <ul>
+                                <li><img src="img/prod/comm4.jpg"></li>
+                                <li><img src="img/prod/comm5.jpg"></li>
+                                <li><img src="img/prod/comm6.jpg"></li>                               
+                            </ul>
+                            <div class="clear"></div>
+                            <p id="re_p1"><span style="color: rgb(86, 121, 161);;">★★★★★</span>&nbsp; <span style="color: gray;">- 아주 좋아요</span></p>
+                            <p id="re_p2">도시락 먹을때 방울소시지 2알씩 곁들여 먹으니까 양이 딱 좋더라고요 맛있습니다</p>
+                            <p id="re_p3">이 리뷰를 1명이 좋아합니다.</p>
+                            <div id="writer">
+                                <span style="color :rgb(196, 194, 194);">작성자</span><br>Bcd**
+                            </div>
+                            <div id="recomm_btn">
+                                <button type="button">추천</button>
+                                <button type="button">비추천</button>
+                            </div>
+                            <div id="comment_btn">
+                                <button type="button" style="text-align: left;"><img src="img/prod/reply.png" style="width: 15px; margin-left: 30px;">1</button>
+                                <button type="button">더보기</button>
+                            </div>
+                        </div>
+                        <div id="review_list">
+                            <ul>
+                                <li><img src="img/prod/comm7.jpg"></li>
+                                <li><img src="img/prod/comm8.jpg"></li>
+                                <li><img src="img/prod/comm9.jpg"></li>                               
+                            </ul>
+                            <div class="clear"></div>
+                            <p id="re_p1"><span style="color: rgb(86, 121, 161);;">★★★★★</span>&nbsp; <span style="color: gray;">- 아주 좋아요</span></p>
+                            <p id="re_p2">떡볶이에 넣어 먹고 맥주안주로먹고<br>부담없는 간식이네요</p>
+                            <p id="re_p3">이 리뷰를 0명이 좋아합니다.</p>
+                            <div id="writer">
+                                <span style="color :rgb(196, 194, 194);">작성자</span><br>Cde**
+                            </div>
+                            <div id="recomm_btn">
+                                <button type="button">추천</button>
+                                <button type="button">비추천</button>
+                            </div>
+                            <div id="comment_btn">
+                                <button type="button" style="text-align: left;"><img src="img/prod/reply.png" style="width: 15px; margin-left: 30px;">1</button>
+                                <button type="button">더보기</button>
+                            </div>
+                        </div>
+                        <div id="review_list">
+                            <ul>
+                                <li><img src="img/prod/comm10.jpg"></li>
+                                <li><img src="img/prod/comm11.jpg"></li>
+                                <li><img src="img/prod/comm12.jpg"></li>                               
+                            </ul>
+                            <div class="clear"></div>
+                            <p id="re_p1"><span style="color: rgb(86, 121, 161);;">★★★★★</span>&nbsp; <span style="color: gray;">- 아주 좋아요</span></p>
+                            <p id="re_p2">강추) 치즈맛은 짜쪼롬하구요 오리지널은 훈제느낌이, 그리고 알싸청양은 많이 맵지 않아서 좋아요~~ <br>계란말이와 먹을 때도 있고 마늘구워서 같이 먹기도 해요 매일 먹는 데일리 음식이에요ㅎㅎ 거의 다 먹어서 재주문하러 왔다가 찐★리뷰남깁니다^^</p>
+                            <p id="re_p3">이 리뷰를 2명이 좋아합니다.</p>
+                            <div id="writer">
+                                <span style="color :rgb(196, 194, 194);">작성자</span><br>Def**
+                            </div>
+                            <div id="recomm_btn">
+                                <button type="button">추천</button>
+                                <button type="button">비추천</button>
+                            </div>
+                            <div id="comment_btn">
+                                <button type="button" style="text-align: left;"><img src="img/prod/reply.png" style="width: 15px; margin-left: 30px;">1</button>
+                                <button type="button">더보기</button>
+                            </div>
+                        </div>
+                        <div id="review_list">
+                            <ul>
+                                <li><img src="img/prod/comm13.jpg"></li>
+                                <li><img src="img/prod/comm14.jpg"></li>
+                                <li><img src="img/prod/comm15.jpg"></li>                               
+                            </ul>
+                            <div class="clear"></div>
+                            <p id="re_p1"><span style="color: rgb(86, 121, 161);;">★★★★★</span>&nbsp; <span style="color: gray;">- 아주 좋아요</span></p>
+                            <p id="re_p2">신상품 나왔대서 샀는데 너무 귀여워여ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ<br>먹어도 안배부를줄 알았는데 1줄만으로도 생각보다 배불러서 놀랐어옄ㅋㅋㅋㅋ<br>진짜 완전 통통하고 탱글탱글하고 속이 알차요!!</p>
+                            <p id="re_p3">이 리뷰를 0명이 좋아합니다.</p>
+                            <div id="writer">
+                                <span style="color :rgb(196, 194, 194);">작성자</span><br>Efg**
+                            </div>
+                            <div id="recomm_btn">
+                                <button type="button">추천</button>
+                                <button type="button">비추천</button>
+                            </div>
+                            <div id="comment_btn">
+                                <button type="button" style="text-align: left;"><img src="img/prod/reply.png" style="width: 15px; margin-left: 30px;">1</button>
+                                <button type="button">더보기</button>
+                            </div>
+                        </div>
+                        <div id="menu1">＜＜ &nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp;&nbsp; ＞＞</div>
+                        <!-- 선택바-->
+                        <div id="inf_bar">
+                            <table id="inf_tb">
+                                <tr>
+                                    <td>상품상세정보</td>
+                                    <td>상품후기</td>
+                                    <td>상품문의</td>
+                                    
+                                    <td>상품구매안내</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- 상품문의 -->                        
+                        <table id="qna">
+                            <tr id="subject">
+                                <td id="tb_num">번호</td>
+                                <td id="tb_name">제목</td>
+                                <td id="tb_man">작성자</td>
+                                <td id="tb_date">작성일</td>
+                            </tr>
+                            <tr>
+                                <td id="num">9</td>
+                                <td id="name"><img src="img/prod/key.png">&nbsp; [배송문의]&nbsp; 닭형 궁금해요 !</td>
+                                <td id="man">김**</td>
+                                <td id="date">2023-01-18</td>
+                            </tr>
+                            <tr>
+                                <td id="num">8</td>
+                                <td id="name">&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/prod/key_re.png">&nbsp;<img src="img/prod/key.png">&nbsp;&nbsp;닭형이 답변드려요 :)</td>
+                                <td id="man"><img src="img/logo_mini.png">&nbsp;&nbsp;닭형</td>
+                                <td id="date">2022-12-01</td>
+                            </tr>
+                            <tr>
+                                <td id="num">7</td>
+                                <td id="name"><img src="img/prod/key.png">&nbsp; [배송문의]&nbsp; 닭형 궁금해요 !</td>
+                                <td id="man">이**</td>
+                                <td id="date">2022-11-17</td>
+                            </tr>
+                            <tr>
+                                <td id="num">6</td>
+                                <td id="name">&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/prod/key_re.png">&nbsp;<img src="img/prod/key.png">&nbsp;&nbsp;닭형이 답변드려요 :)</td>
+                                <td id="man"><img src="img/logo_mini.png">&nbsp;&nbsp;닭형</td>
+                                <td id="date">2022-08-30</td>
+                            </tr>
+                            <tr>
+                                <td id="num">5</td>
+                                <td id="name"><img src="img/prod/key.png">&nbsp; [배송문의]&nbsp; 닭형 궁금해요 !</td>
+                                <td id="man">박**</td>
+                                <td id="date">2022-08-08</td>
+                            </tr>
+                        </table>
+                        <div id="qna_box">
+                            <div id="q1">상품문의하기</div>
+                            <div id="q2">모두보기</div>
+                        </div>
+                        <div id="menu1" style="margin-top: 80px;">＜＜ &nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp; ＞＞</div>
+
+
+                        <!-- 선택바-->
+                        <div id="inf_bar">
+                            <table id="inf_tb">
+                                <tr>
+                                    <td>상품상세정보</td>
+                                    <td>상품후기</td>
+                                    <td>상품문의</td>
+                                    
+                                    <td>상품구매안내</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- 상품구매안내 (반복)-->
+                        <div class="info_name">
+                            <h2>상품결제정보</h2>
+                        </div>
+                        <div class="info_content">
+                            <p>고액결제의 경우 안전을 위해 카드사에서 확인전화를 드릴 수도 있습니다. 확인과정에서 도난 카드의 사용이나 타인 명의의 주문등 정상적인 주문이 아니라고 판단될 경우 임의로 주문을 보류 또는 취소할 수 있습니다.<br><br><br> 
+                                무통장 입금은 상품 구매 대금은 PC뱅킹, 인터넷뱅킹, 텔레뱅킹 혹은 가까운 은행에서 직접 입금하시면 됩니다.<br>   
+                                주문시 입력한 입금자명과 실제입금자의 성명이 반드시 일치하여야 하며, 7일 이내로 입금을 하셔야 하며 입금되지 않은 주문은 자동취소 됩니다.
+                            </p>
+                            
+                        </div>
+                        <div class="info_name">
+                            <h2>배송정보</h2>
+                        </div>
+                        <div class="info_content">
+                            <p>배송 방법 : 택배</p>
+                            <p>배송 지역 : 전국지역(도서산간/제주 추가비용 발생)</p>
+                            <p>배송 비용 : 3,000원</p>
+                            <p>배송 기간 : 2일 ~ 5일</p>
+                            <p>배송 안내 :</p><br>
+                            <p style="line-height: 30px;"><b>[공통 배송 안내]</b></p>
+                            <p>- 배송시간 지정은 각 지역 택배기사님의 스케줄에 따라 다르기 때문에 불가능합니다.</p>
+                            <p>- 고객님의 부재 시 잘못된 주소, 전화번호 결번 시 반송이 되는 경우가 있으니 배송정보를 정확하게 작성해주시기 바랍니다.</p>
+                            <p>- 수령지가 '회사'일 경우, 배송 안내를 꼭 확인해주시기 바랍니다. (수령인 부재로 인한 교환 및 환불은 어려운 점 양해 부탁드립니다.)</p>
+                            <p>- 주소 오기재로 인한 오배송 시 교환/반품이 불가합니다.</p>
+                            <p>- 유통기한은 제품 패키지에 별도 표기하였습니다.</p><br>
+                            <p style="line-height: 30px;"><b>[닭가슴살 상품군]</b></p>
+                            <p>- 금요일 오후 2시 이후 주문 건은 제품의 신선도를 위해 월요일에 일괄 출고됩니다.</p>
+                            <p>- 제주도 및 도서산간 지역은 지역 특성상 녹아서 배송될 수 있으며, 해당 사유로 인한 교환/반품은 불가하오니 이점 참고 부탁드립니다.</p>
+                            <p>- 제주도 지역의 경우, 3,000원의 추가 운임 책정됩니다.</p>
+                            <p>- 유통기한은 제품 패키지에 별도 표기하였습니다.</p><br><br>
+                            <p>바르닭 고객센터 [1544-1234] 또는 1:1 문의 게시판 이용을 부탁드립니다.</p>
+
+                        </div>
+                        <div class="info_name">
+                            <h2>교환 및 반품정보</h2>
+                        </div>
+                        <div class="info_content" style="margin-bottom: 150px;">
+                            <p>- 제품의 하자나 판매자의 실수로 인한 경우 교환/반품 가능합니다.</p>
+                            <p>- 개봉하신 제품은 교환/반품이 불가능하므로 꼭 확인 후 개봉하도록 합니다.</p>
+                            <p>- 고객의 단순 변심일 경우 교환/반품이 불가합니다.</p>
+                            <p>- 제품에 하자가 있는 경우, 제품 수령 즉시 고객센터로 유선 연락 부탁드리며,<br>&nbsp;&nbsp;&nbsp;&nbsp;판매자 협의 없이 임의 반품하는 경우 교환/반품이 불가합니다.</p>
+                            <p>- 주소 오기재로 인한 오배송시 교환/반품이 불가합니다.</p>
+                            <p>- 상품 수령 후 보관상 발생한 변질, 파손에 대해서는 교환/반품이 불가합니다.</p>
+                            <p>- 수령인 부재로 인한 교환 및 환불은 불가합니다.</p><br><br>
+                            <p><b>네이버페이(N페이) 구매 주의</b></p>
+                            <p style="color: red;">- 식품 판매로 인해 네이버페이 자동수거지시가 불가합니다.</p>
+                            <p style="color: red;">- 택배 자동수거 접수 진행은 어려우며, 결제 시스템으로 수동접수로 도와드리고 있습니다.</p>
+                            <p style="color: red;">- 제주도 및 도서산간 지역 별도의 추가금액을 지불하셔야 하는 경우가 있습니다.</p><br><br>
+                            <p>바르닭 고객센터 [1566-3197] 또는 1:1 문의 게시판 이용을 부탁드립니다.</p>
+                        </div>
+                       
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- 후기 큰박스 -->
+                    </div>
+
+                    
+                    
+
+                
+
+
+
+
+
+
+
+
+
+                <!-- container div  -->
+            </div>
+          
+
+            
+
+
+        </section>
+        <!-- 푸터시작-------------- -->
+        <footer>
+            <div id="container">
+                <div id="f_line_d">
+                <a href="#" id="f_line">회사소개</a>
+                <a href="#" id="f_line">이용약관</a>
+                <a href="#" id="f_line">개인정보처리방침</a>
+                <a href="#" id="f_line">이용안내</a>
+                <a href="#" id="f_line">고객센터</a>
+                </div>
+                <div id="line"></div>
+            <img src="img/logo.png">
+            <ul id="footer_info">
+                <li>상호 : (주) 닭형 | 대표 : 박예림 | 전화: 1544-1234 </li>
+                <li>사업자 등록번호 안내 : [123-45-67890] | 통신판매업 신고 제 2023-서울강남-12345 호</li>
+                <li>주소 : 서울특별시 주소: 서울특별시 종로구 인사동12길 12 대일빌딩 15층 | 개인정보보호책임자 : 박예림(<a href="xxx@gmail.com">xxx@gmail.com</a>)</li>
+                <li>입점/제휴/수출/마케팅 문의 : <a href="xxx@gmail.com">xxx@gmail.com</a> | 호스팅 제공 : 카페24(주)</li>
+                <li>Copyright © 2023 닭형. All rights reserved.</li>
+    
+            </ul>
+    
+            </div>
+    
+        </footer>
+    </div>
+
+    <script>
+        // quertSelect () : css - id : #, class :
+        /* getElementById() : 태그 내부에 적용된 id
+           getElementByClassName() : 태그 내부에 적용된 class
+
+           엘리먼트(태그)의 속성값을 변경할 때 : 객체.setAttribute를 사용함. id 속성에만 적용되어있다.
+           class 
+
+        */
+
+        /* DOM 객체를 생성
+
+
+
+        */
+
+
+
+        // class, id 속성을 가져와서 변수에 할당
+        var pics = document.getElementsByClassName("pic");
+        var lightbox = document.getElementById("lightbox");
+        var lightboxImage = document.getElementById("lightboxImage"); 
+
+        // for 루프를 돌리면서 썸네일을 클릭시 showLightbox() 함수를 호출
+        for (var i = 0; i <pics.length; i++){
+            pics[i].addEventListener("click", showLightbox);
+            // pics 배열의 i번재 요소를 클릭시 showLightbox() 함수를 호출
+        }
+
+        // 섬네일을 클릭시 img 태그의 원본 이미지를 적용하는 함수, 화면에 출력하는 함수
+        function showLightbox(){
+            var biglocation = this.getAttribute ("data-src");   //data-src 의 값을 가져와서 biglocation 변수에 할당
+            lightboxImage.setAttribute("src" , biglocation);
+            lightbox.style.display = "block";      /*화면에 출력되도록 설정 : none => block*/
+
+        }
+
+        // 출력된 화면을 클릭시 다시 원래대로 되돌리는 함수
+        lightbox.onclick = function (){
+            lightbox.style.display="none";
+        }
+
+
+    </script>
+    
+</body>
+</html>
