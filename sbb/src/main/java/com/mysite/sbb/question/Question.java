@@ -35,7 +35,10 @@ public class Question {
 	@Column(length =200)		//200자까지 
 	private String subject; 
 	
-	@Column(columnDefinition = "TEXT")
+	//@Column(columnDefinition = "TEXT")
+		//html일때
+		@Column(length = 4000)
+			//oracle 일 때
 	private String content; 
 	
 	private LocalDateTime createDate; 	//create_date : 

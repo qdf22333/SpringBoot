@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
+    <!-- 카카오 스크립트 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<!-- 네이버 스크립트 -->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"charset="utf-8"></script>
+		
     <style>
         * {
             margin: 0;
@@ -207,7 +214,7 @@
 <body>
     <div id="wrap">
         <div id="back_btn">
-            <button id="back" type="button"><a href="index.html"> ＜ 뒤로가기</a></button>
+            <button id="back" type="button"><a href="/"> ＜ 뒤로가기</a></button>
         </div>
         <div id="container">
             <img id="logo" src="img/logo.png" width="30px">
@@ -217,10 +224,38 @@
             <p id="p1">로그인</p>
             <p id="p2">아이디와 비밀번호 입력하기 귀찮으시죠?</p>
             <p id="p2">카카오로 1초 만에 로그인 하세요.</p>
-            <a href="#"><img id="kakao" src="img/kakao.png"></a>
+            <a href="javascript:kakaoLogin();"><img id="kakao" src="img/kakao.png"></a>
+            <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        window.Kakao.init('e664d959eaed7e28a4b9fc567fc23b4f');
+
+        function kakaoLogin() {
+            window.Kakao.Auth.login({
+                scope: 'account_email, gender, age_range, birthday', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+                success: function(response) {
+                    console.log(response) // 로그인 성공하면 받아오는 데이터
+                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+                        url: '/v2/user/me',
+                        success: (res) => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account)
+                        }
+                    });
+                    window.location.href='kakao' //리다이렉트 되는 코드
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });           
+            
+        }
+        
+       
+
+    </script>
             <div id="login"></div>
             <table id="select">
-                <tr>
+                <tr>                	
                     <td id="t1"><button type="button"><a href="#">기존 회원이세요?</a></button></td>
                     <td id="t2"><button type="button"><a href="#">비회원 배송조회</a></button></td>
                 </tr>
@@ -242,6 +277,9 @@
             <div id="join"><a href="#">가입하기</a></div>
             <div id="login2"></div>
             <div id="naver"><a href="#"><img src="img/naver.png"></a></div>
+            
+            
+            
             <div id="login3"></div>
             <p id="p3">카카오 1초 로그인/회원가입 이란?</p>
             <p id="p4">카카오 싱크를 활용한 간편 로그인/가입 기능입니다.</p>
@@ -260,7 +298,8 @@
       
     </div>
 
-
     
 </body>
+
+
 </html>

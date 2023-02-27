@@ -1,0 +1,45 @@
+	<!doctype html>
+<html lang="ko">
+<head>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<a href="javascript:kakaoLogout();">로그아웃</a><br>
+                	<script>
+                    //로그아웃
+                    
+                    window.Kakao.init('e664d959eaed7e28a4b9fc567fc23b4f');
+            	function kakaoLogout() {
+                	if (!Kakao.Auth.getAccessToken()) {
+            		    console.log('Not logged in.');
+            		    return;
+            	    }
+            	    Kakao.Auth.logout(function(response) {
+                		alert(response +' logout');
+            		    window.location.href='/'
+            	    });
+            };</script>
+            
+            
+                	<a href="javascript:secession();">탈퇴</a>
+                	<script>
+                	//탈퇴
+                		
+                	function secession() {
+                		Kakao.API.request({
+                	    	url: '/v1/user/unlink',
+                	    	success: function(response) {
+                	    		console.log(response);
+                	    		//callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
+                	    		window.location.href='login'
+                	    	},
+                	    	fail: function(error) {
+                	    		console.log('탈퇴 미완료')
+                	    		console.log(error);
+                	    	},
+                		});
+                	};
+                	</script>
+</body>
+</html>
