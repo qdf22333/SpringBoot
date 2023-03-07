@@ -1,6 +1,7 @@
 package com.mysite.proj.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -56,6 +57,14 @@ public class IndexController {
 	    public String naver() {
 	        return "naver";
 	    }
+		
+		//질문상세보기
+		@GetMapping("/notice/detail")
+		public String detail() {
+			return "notice_detail";
+		}
+		
+	
 	
 
 }

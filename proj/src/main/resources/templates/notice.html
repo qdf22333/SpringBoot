@@ -361,11 +361,17 @@ footer li {
 						<td id="tb_date">작성일</td>
 					</tr>
 					<tr th:each="question : ${questionList}">
-						<td th:text="${question.subject}"></td>
-						<td th:text="${question.createDate}"></td>
+						<td><a th:href="@{|/notice/detail/${question.id}|}"
+							th:text="${question.subject}"></a></td>
+						<td id="date" th:text="${question.createDate}"></td>
 					</tr>
 
 				</table>
+
+				<!-- 질문 등록하기 -->
+				 <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
+				 
+				 
 				<div id="menu1">＜＜ &nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
 					2&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;
 					5&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp;
