@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <!-- 카카오 스크립트 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<!-- 네이버 스크립트 -->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"charset="utf-8"></script>
+		
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+            box-sizing: border-box;
+            font-family: 'NanumSquareNeo-Variable';
+
+        }
+
+        ul {
+            list-style: none;
+        }
+        #wrap {
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 100px;
+            width: 600px;
+            /* background-color: bisque; */
+            
+        }
+     
+           
+        
+        #container {
+            width: 450px;
+            height: inherit;
+            margin: 0 auto;
+            /* border: 1px solid blue; */
+            position: relative;
+
+        }
+
+        #logo {
+            margin-top: 60px;
+            margin-bottom: 20px;
+        }
+        #back_btn {
+            position: absolute;
+            top: 26px;
+        }
+        #back {
+            border: 1px solid rgb(219, 218, 218);
+            border-radius: 30px;
+            padding: 3px 10px;
+            font-weight: bold;
+            background-color: white;         
+        
+        }
+        a {
+            text-decoration: none;
+        }
+        a:link {
+            color: black;
+        }
+        a:hover {
+            color: black;
+        }
+
+        /* a { 
+            text-decoration: none;
+        } */
+      
+        a:visited { 
+            color: rgb(97, 93, 93);
+        }
+        a:active{
+            color: rgb(97, 93, 93);
+        }
+
+
+        #back:hover {
+            background-color: rgb(236, 232, 232);
+        }
+        #login {
+            border-top: 1px solid rgb(219, 218, 218);
+        }
+        p {
+            text-align: left;       
+            
+        }
+        #p1{
+            font-size: 20px;
+            margin: 30px 0;
+            
+        }
+        #p2{
+            font-size: 14px;
+            padding: 3px;
+        }
+        #kakao {
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        #select {
+           margin: 30px 0;
+
+        }
+      
+        #select td {
+            border-radius: 4px;
+        }     
+   
+        #select button {
+            width: 220px;
+            height: 40px;
+            border: 1px solid rgb(219, 218, 218);
+            background-color: white;
+            border-radius: 5px;
+
+        }
+        #id {
+            font-size: 14px;
+            
+
+        }
+        #log_btn{
+        	color: white;
+         }
+      
+       
+        input {
+            border: 1px solid rgb(219, 218, 218);
+            width: 442px;
+            height: 40px;
+            border-radius: 5px;
+            text-align: 10px;
+        }
+       
+        input:focus {outline: none;} /* outline 테두리 없애기 */
+
+        #original {
+            margin-top: 10px;
+        }
+
+        #original button{
+            width: 442px;
+            height: 40px;
+            border: 1px solid rgb(219, 218, 218);
+            background-color: rgb(58, 58, 58);
+            border-radius: 5px;
+           
+        }
+        #search {
+            font-size: 12px;
+            float: left;
+            margin-left: 5px;
+            margin-top: 20px;
+        }
+        #join{
+            font-size: 12px;
+            float: right;
+            margin-right: 5px;
+            margin-top: 20px;
+        }
+        #login2 {
+            border-top: 1px solid rgb(219, 218, 218);
+            margin-top: 70px;
+            margin-bottom: 30px;
+        }
+        div #naver {
+            border: 1px solid rgb(219, 218, 218);
+            padding: 5px 0;
+        }
+        #login3 {
+            border-top: 2px solid rgb(58, 58, 58);
+            margin-top: 30px;                  
+        }
+        #p3{
+            font-size: 13px;
+            margin-top: 30px;
+            font-weight: bold;
+            color: rgb(58, 58, 58);;
+        }
+        #p4{
+            font-size: 13px;
+            margin-top: 3px;
+            color: rgb(58, 58, 58);
+        }
+        #p5{
+            font-size: 11px;
+            margin-top: 15px;
+            color: rgb(182, 180, 180);;
+        }
+
+        @font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+        
+    
+       
+
+    
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="back_btn">
+            <button id="back" type="button"><a href="/"> ＜ 뒤로가기</a></button>
+        </div>
+        <div id="container">
+            <img id="logo" src="img/logo.png" width="30px">
+        </div>
+        <div id="login"></div>
+        <div id="container" class="login">
+            <p id="p1">로그인</p>
+            <p id="p2">아이디와 비밀번호 입력하기 귀찮으시죠?</p>
+            <p id="p2">카카오로 1초 만에 로그인 하세요.</p>
+            <a href="javascript:kakaoLogin();"><img id="kakao" src="img/kakao.png"></a>
+            <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        window.Kakao.init('e664d959eaed7e28a4b9fc567fc23b4f');
+
+        function kakaoLogin() {
+            window.Kakao.Auth.login({
+                scope: 'account_email, gender, age_range, birthday', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+                success: function(response) {
+                    console.log(response) // 로그인 성공하면 받아오는 데이터
+                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+                        url: '/v2/user/me',
+                        success: (res) => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account)
+                        }
+                    });
+                    window.location.href='/' //리다이렉트 되는 코드
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });           
+            
+        }
+        
+       
+
+    </script>
+            <div id="login"></div>
+            <table id="select">
+                <tr>                	
+                    <td id="t1"><button type="button"><a href="#">기존 회원이세요?</a></button></td>
+                    <td id="t2"><button type="button"><a href="#">비회원 배송조회</a></button></td>
+                </tr>
+            </table>
+             <form th:action="@{/user/login}" method="post">
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">
+                사용자ID 또는 비밀번호를 확인해 주세요.
+            </div>
+        </div>
+            <table id="id">
+                <tr>
+                    <td><input type="text" placeholder="    아이디"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="    비밀번호"></td>
+                </tr>
+            </table>
+            <table id="original">
+                <tr>
+                    <td><button type="submit"><span id=log_btn>기존회원 로그인</span></button></td>
+                </tr>         
+            </table>
+            </form>
+            <div id="search"><a href="#">아이디/비밀번호 찾기</a></div>
+            <div id="join"><a th:href="@{/user/signup}">가입하기</a></div>
+            <div id="login2"></div>
+            <div id="naver"><a href="#"><img src="img/naver.png"></a></div>
+            
+            
+            
+            <div id="login3"></div>
+            <p id="p3">카카오 1초 로그인/회원가입 이란?</p>
+            <p id="p4">카카오 싱크를 활용한 간편 로그인/가입 기능입니다.</p>
+            <p id="p5">닭형 X 카카오싱크 부스터</p>
+            
+
+
+
+
+        </div>
+
+
+
+
+
+      
+    </div>
+
+    
+</body>
+
+
+</html>

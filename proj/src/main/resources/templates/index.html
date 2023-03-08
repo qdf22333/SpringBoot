@@ -295,7 +295,11 @@
 
             <nav id="top_menu">
                 <ul>
-                    <li class="green"><a href="login" style="text-decoration: none;"><img src="img/login.png" width="30px"></a></li>
+                	<!-- 로그인 -->
+                    <li class="green"><a sec:authorize="isAnonymous()" th:href="@{/user/login}" style="text-decoration: none;"><img src="img/login.png" width="30px"></a>
+                    <!-- 로그아웃 -->
+                    <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" style="text-decoration: none;">
+                    <img src="img/login.png" width="30px"></a></li>
                     <li class="green"><a href="#"><img src="img/cart.png" width="30px"></a></li>
                     <li><a href="#"><img src="img/mypage.png" width="30px"></a></li>
                 </ul>

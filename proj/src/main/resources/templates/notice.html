@@ -5,6 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>공지사항</title>
+<!--  
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+-->
 <style>
 * {
 	margin: 0;
@@ -176,6 +179,31 @@ p {
 	padding: 10px;
 	margin: 30px 0;
 }
+#menu1 li {
+
+	display : inline-block;
+	margin: 20px 7px 0 7px;
+	font-size:14px;
+}
+.q_btn{
+	padding : 2px 10px;
+	border: 1px solid rgb(219, 218, 218);
+	border-radius: 5px;
+	font-size:14px;
+	background-color: rgb(247, 245, 245);
+
+	position: absolute;
+	right:20px;
+
+	bottom: 120px; 
+}
+
+#sub{
+	text-align: left;
+	
+	}
+
+
 
 #menu2 {
 	/* border: 1px solid red; */
@@ -241,6 +269,10 @@ a:active {
 
 .clear {
 	clear: both;
+}
+
+#question_num {
+	padding: 10px
 }
 
 /* 푸터 */
@@ -357,25 +389,49 @@ footer li {
 					<tr id="subject">
 						<td id="tb_num">번호</td>
 						<td id="tb_name">제목</td>
-						<td id="tb_man">작성자</td>
+						<td id="tb_man"></td>
 						<td id="tb_date">작성일</td>
 					</tr>
-					<tr th:each="question : ${questionList}">
-						<td><a th:href="@{|/notice/detail/${question.id}|}"
+					<tr th:each="question, loop : ${paging}">
+						<td id="question_num"
+							th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
+
+						<!-- 제목 -->
+						<td id="sub"><a th:href="@{|/notice/detail/${question.id}|}"
 							th:text="${question.subject}"></a></td>
-						<td id="date" th:text="${question.createDate}"></td>
+						<td></td>
+
+						<td
+							th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+
+
 					</tr>
 
 				</table>
 
+
+				<!-- 페이징처리 시작 -->
+				<div th:if="${!paging.isEmpty()}" id="menu1">
+					<ul>
+						<li th:classappend="${!paging.hasPrevious} ? 'disabled'"><a
+							th:href="@{|?page=${paging.number-1}|}"> <span>이전</span>
+						</a></li>
+						<li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+							th:if="${page >= paging.number-5 and page <= paging.number+5}"
+							th:classappend="${page == paging.number} ? 'active'"><a
+							th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a></li>
+						<li th:classappend="${!paging.hasNext} ? 'disabled'"><a
+							th:href="@{|?page=${paging.number+1}|}"> <span>다음</span>
+						</a></li>
+					</ul>
+				</div>
+				<!-- 페이징처리 끝 -->
+
 				<!-- 질문 등록하기 -->
-				 <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
-				 
-				 
-				<div id="menu1">＜＜ &nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
-					2&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;
-					5&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp;
-					8&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp;&nbsp; ＞＞</div>
+				<a th:href="@{/question/create}" class="q_btn">질문 등록하기</a>
+
+
+
 				<div id="menu2">
 					<div id="select_date">
 						<select style="padding: 2px; width: 80px;">
