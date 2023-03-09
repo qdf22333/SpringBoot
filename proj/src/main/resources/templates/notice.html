@@ -246,6 +246,20 @@ select {
 	border: 1px solid rgb(161, 160, 160);
 }
 
+.answer_num{
+	color: blue;
+	
+	
+	font-size:12px;
+	margin-left:5px;
+}
+
+
+
+
+
+
+
 /* 메인끝 */
 a {
 	text-decoration: none;
@@ -389,7 +403,7 @@ footer li {
 					<tr id="subject">
 						<td id="tb_num">번호</td>
 						<td id="tb_name">제목</td>
-						<td id="tb_man"></td>
+						<td id="tb_man">글쓴이</td>
 						<td id="tb_date">작성일</td>
 					</tr>
 					<tr th:each="question, loop : ${paging}">
@@ -398,8 +412,15 @@ footer li {
 
 						<!-- 제목 -->
 						<td id="sub"><a th:href="@{|/notice/detail/${question.id}|}"
-							th:text="${question.subject}"></a></td>
-						<td></td>
+							th:text="${question.subject}"></a>
+							<!-- 답변개수 표시 -->
+							<span class="answer_num"
+                        th:if="${#lists.size(question.answerlist) > 0}" 
+                        th:text="${#lists.size(question.answerlist)}">
+                    </span>
+							
+							</td>
+						<td><span th:if="${question.author != null}" th:text="${question.author.username}"></span></td>
 
 						<td
 							th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>

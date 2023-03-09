@@ -18,12 +18,13 @@ public class IndexController {
 	
 	//로그인
 	
+	/*
 	@GetMapping("/login")
 	public String login() {
 		 
 		return "login";
 	}
-	
+	*/
 	//공지사항
 	@RequestMapping(value = "/notice")
 	public String notice() {
@@ -63,6 +64,12 @@ public class IndexController {
 		public String detail() {
 			return "notice_detail";
 		}
+		
+		//질문상세보기
+				@GetMapping("/signup_2")
+				public String sign2() {
+					return "signup_2";
+				}
 		
 	
 	

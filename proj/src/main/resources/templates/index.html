@@ -285,7 +285,7 @@
 </head>
 <body>
     <div id="wrap">
-        <p id="fix_logo"><a href="login" onclick="window.open('login','name','resizable=no width=600 height=700');return false"><img src="img/fix_logo.png"></a></p>
+        <p id="fix_logo"><a th:href="@{/user/login}" onclick="window.open('/user/login','name','resizable=no width=600 height=700');return false"><img src="img/fix_logo.png"></a></p>
         <!-- 헤더 시작--------------- -->
         <header>
             <div id="container">
@@ -296,12 +296,13 @@
             <nav id="top_menu">
                 <ul>
                 	<!-- 로그인 -->
-                    <li class="green"><a sec:authorize="isAnonymous()" th:href="@{/user/login}" style="text-decoration: none;"><img src="img/login.png" width="30px"></a>
+                    <li class="green">
+                    <a sec:authorize="isAnonymous()" th:href="@{/user/login}" style="text-decoration: none;"><img src="img/mypage.png" width="30px"></a>
                     <!-- 로그아웃 -->
                     <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" style="text-decoration: none;">
                     <img src="img/login.png" width="30px"></a></li>
                     <li class="green"><a href="#"><img src="img/cart.png" width="30px"></a></li>
-                    <li><a href="#"><img src="img/mypage.png" width="30px"></a></li>
+                   
                 </ul>
                 
             </nav> <!-- top_ menu-->
