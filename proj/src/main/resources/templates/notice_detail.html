@@ -286,7 +286,7 @@ footer li {
 		<!-- 헤더 시작--------------- -->
 		<header>
 			<div id="container">
-				<a href="index.html"><img id="logo" src="img/logo.png"></a>
+				<a href="/"><img id="logo" src="img/logo.png"></a>
 				<div id="search">
 					<input type="text" placeholder="닭가슴살 소시지">
 					<button type="button">
@@ -296,28 +296,30 @@ footer li {
 
 
 				<nav id="top_menu">
-					<ul>
-						<li class="green"><a href="login.html"
-							style="text-decoration: none;"><img src="img/login.png"
-								width="30px"></a></li>
-						<li class="green"><a href="#"><img src="img/cart.png"
-								width="30px"></a></li>
-						<li><a href="#"><img src="img/mypage.png" width="30px"></a></li>
-					</ul>
-
-				</nav>
+                <ul>
+                	<!-- 로그인 -->
+                    <li class="green">
+                    <a sec:authorize="isAnonymous()" th:href="@{/user/login}" style="text-decoration: none;"><img src="img/mypage.png" width="30px"></a>
+                    <!-- 로그아웃 -->
+                    <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" style="text-decoration: none;">
+                    <img src="img/login.png" width="30px"></a></li>
+                    <li class="green"><a href="#"><img src="img/cart.png" width="30px"></a></li>
+                   
+                </ul>
+                
+            </nav> <!-- top_ menu-->
 				<!-- top_ menu-->
 				</section>
 				<!-- section_top-->
 				<section id="main_menu_d1">
 					<nav id="main_menu">
 						<ul>
-							<li><a href="#">전체</a></li>
+							<li><a href="/">전체</a></li>
 							<li><a href="list.html">닭가슴살</a></li>
 							<li><a href="#">도시락</a></li>
 							<li><a href="#">샐러드/소스</a></li>
 							<li><a href="#">다이어트</a></li>
-							<li><a href="notice.html">공지사항</a></li>
+							<li><a href="notice">공지사항</a></li>
 						</ul>
 					</nav>
 			</div>
@@ -345,11 +347,23 @@ footer li {
 
 				<!-- 질문 수정 버튼 -->
 				<div class="my-3">
+					<a href="javascript:void(0);" class="recommend btn btn-sm btn-outline-secondary"
+                th:data-uri="@{|/question/vote/${question.id}|}" >
+                추천
+                <span class="badge rounded-pill bg-success" th:text="${#lists.size(question.voter)}"></span>
+            </a>
 					<a th:href="@{|/question/modify/${question.id}|}"
 						class="btn btn-sm btn-outline-secondary"
 						sec:authorize="isAuthenticated()"
 						th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.username}"
 						th:text="수정"></a>
+						
+				<!--질문 삭제 -->
+				 <a href="javascript:void(0);" th:data-uri="@{|/question/delete/${question.id}|}"
+                class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
+                th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.username}"
+                th:text="삭제"></a>		
+						
 				</div>
 
 
@@ -374,6 +388,29 @@ footer li {
 									th:text="${#temporals.format(answer.createDate, 'yyyy-MM-dd HH:mm')}"></div>
 							</div>
 						</div>
+						
+						<!-- 답변 추천-->
+						   <a href="javascript:void(0);" class="recommend btn btn-sm btn-outline-secondary"
+                th:data-uri="@{|/answer/vote/${answer.id}|}">
+                추천
+                <span class="badge rounded-pill bg-success" th:text="${#lists.size(answer.voter)}"></span>
+            </a>
+            
+            <!-- 답변 수정-->
+						     <div class="my-3">
+            <a th:href="@{|/answer/modify/${answer.id}|}" class="btn btn-sm btn-outline-secondary"
+                sec:authorize="isAuthenticated()"
+                th:if="${answer.author != null and #authentication.getPrincipal().getUsername() == answer.author.username}"
+                th:text="수정"></a>
+                
+                <!-- 답변 삭제-->
+                
+                <a href="javascript:void(0);" th:data-uri="@{|/answer/delete/${answer.id}|}"
+                class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
+                th:if="${answer.author != null and #authentication.getPrincipal().getUsername() == answer.author.username}"
+                th:text="삭제"></a>
+        </div>
+						
 					</div>
 				</div>
 
@@ -401,7 +438,7 @@ footer li {
 		</section>
 
 		<!-- 푸터 시작 -->
-		<!-- 푸터시작-------------- -->
+		<!-- 푸터시작  -->
 		<footer>
 			<div id="container">
 				<div id="f_line_d">
@@ -428,4 +465,26 @@ footer li {
 			</div>
 
 		</footer>
+		<script layout:fragment="script" type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+
+
+const recommend_elements = document.getElementsByClassName("recommend");
+Array.from(recommend_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 추천하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
 	</div>
+	</body>
+	</html>

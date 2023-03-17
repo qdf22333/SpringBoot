@@ -1,6 +1,7 @@
 package com.mysite.proj.answer;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import org.springframework.data.annotation.CreatedDate;
 
@@ -12,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,5 +38,9 @@ public class Answer {
 	
     @ManyToOne
     private SiteUser author;
+    
+    //추천
+    @ManyToMany
+    Set<SiteUser> voter;
 
 }
