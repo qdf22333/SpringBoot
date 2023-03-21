@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품상세</title>
+    
+    <!--  
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    -->
+    
+    <!-- 사용자 스크립트 추가 
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready(function(){
+
+            calculateToalPrice();
+
+            $("#count").change( function(){
+                calculateToalPrice();
+            });
+        });
+
+        function calculateToalPrice(){
+            var count = $("#count").val();
+            var price = $("#price").val();
+            var totalPrice = price*count;
+            $("#totalPrice").html(totalPrice + '원');
+        }
+
+        function order(){
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            var url = "/order";
+            var paramData = {
+                itemId : $("#itemId").val(),
+                count : $("#count").val()
+            };
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url      : url,
+                type     : "POST",
+                contentType : "application/json",
+                data     : param,
+                beforeSend : function(xhr){
+                    /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                    xhr.setRequestHeader(header, token);
+                },
+                dataType : "json",
+                cache   : false,
+                success  : function(result, status){
+                    alert("주문이 완료 되었습니다.");
+                    location.href='/';
+                },
+                error : function(jqXHR, status, error){
+
+                    if(jqXHR.status == '401'){
+                        alert('로그인 후 이용해주세요');
+                        location.href='/members/login';
+                    } else{
+                        alert(jqXHR.responseText);
+                    }
+
+                }
+            });
+        }
+
+        function addCart(){
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            var url = "/cart";
+            var paramData = {
+                itemId : $("#itemId").val(),
+                count : $("#count").val()
+            };
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url      : url,
+                type     : "POST",
+                contentType : "application/json",
+                data     : param,
+                beforeSend : function(xhr){
+                    /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                    xhr.setRequestHeader(header, token);
+                },
+                dataType : "json",
+                cache   : false,
+                success  : function(result, status){
+                    alert("상품을 장바구니에 담았습니다.");
+                    location.href='/';
+                },
+                error : function(jqXHR, status, error){
+
+                    if(jqXHR.status == '401'){
+                        alert('로그인 후 이용해주세요');
+                        location.href='/members/login';
+                    } else{
+                        alert(jqXHR.responseText);
+                    }
+
+                }
+            });
+        }
+
+    </script>
+</th:block>
+    -->
+    
+    
+    <style>
+        *{
+            
+            margin: 0;
+            padding: 0;
+            
+        }
+       
+
+        header{
+            background-color: antiquewhite;
+            height: 200px;
+            text-align: center;
+        }
+        .main {
+            height: 800px;
+            border: 1px solid red;
+            text-align: center;
+        }
+        #btn_category{
+            margin: 20px 0;
+        }
+       #main_image{
+        border: 1px solid ;
+        width: 500px;
+        height: 300px;
+        margin: 0 auto;
+       }
+       #product input{
+        display: flex;     
+        margin: 20px auto;
+        
+       }
+
+
+
+        <!--푸터-->
+        footer{
+           
+    
+        }
+        #foot{
+            height: 200px;
+            background-color: antiquewhite;
+            text-align: center;
+        }
+
+
+    </style>
+    
+    
+</head>
+<body>
+    <div class="rap">
+
+        <!--헤더시작-->
+        <header>
+            
+            헤더입니다.
+
+        </header>
+        <!--헤더 끝-->
+
+        <!--메인시작-->
+        <section>
+            <div class="main">
+                <input type="submit" value='카테고리명' id="btn_category"></input>
+                <h1>프로젝트 제목</h1>
+                <div id="main_image">이미지</div>
+
+                <div id="product">
+                
+             	<input type="hidden" value="${item.idx}">
+                <input type="text" th:value="${itemName}">	<!-- 상품명 -->
+                <input type="text" value="목표금액">
+                <input type="text" value="상품설명">
+                <input type="text" value="판매금액">
+                <input type="text" value="프로젝트 시작날짜">
+                <input type="text" value="프로젝트 마감날짜">
+                <input type="text" value="상품상태">
+                </div>    
+
+
+         
+
+
+
+
+            </div>
+       
+
+
+        </section>
+        <!--메인 끝-->
+
+
+
+        <!--푸터시작-->
+        <footer>
+            <div id="foot">
+            푸터
+        </div>
+        </footer>
+        <!--푸터 끝-->
+    </div>
+    
+</body>
+</html>
