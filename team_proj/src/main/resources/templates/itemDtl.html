@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -187,8 +192,8 @@
 
                 <div id="product">
                 
-             	<input type="hidden" value="${item.idx}">
-                <input type="text" th:value="${itemName}">	<!-- 상품명 -->
+             	<input type="hidden" th:value=[[${item.itemidx}]]>
+                <input type="text" th:value=[[${item.itemName}]]>	<!-- 상품명 -->
                 <input type="text" value="목표금액">
                 <input type="text" value="상품설명">
                 <input type="text" value="판매금액">
